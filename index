@@ -903,6 +903,9 @@ button:hover {
     <div class="popup-hof popup-box">
         <button class="close-btn" onclick="closeHofPopup()">&times;</button>
         <h3>🏆 명예의 전당🏆</h3>
+        <small id="hof-reset-message" style="display: none; color: #888; margin-top: -10px; margin-bottom: 10px;">
+            순위는 자정마다 초기화됩니다.
+        </small>
         <div class="hof-input-group">
             <input type="text" id="hof-initial" placeholder="AAA" maxlength="3" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z]/g, '')">
             <button id="hof-submit-btn" class="primary-btn">등록</button>
@@ -910,7 +913,23 @@ button:hover {
         <div id="hof-message"></div>
         <div class="hof-columns">
             <div class="hof-column">
-                <h3>🎓 클래식 모드</h3>
+                <h3>👑 오늘의 최고 득점자</h3>
+                <div class="hof-table-container">
+                    <table id="hof-table-top-scorers">
+                        <thead>
+                            <tr>
+                                <th>⭐</th>
+                                <th>이니셜</th>
+                                <th>점수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="hof-column">
+                <h3>🎓 클래식 모드 순위</h3>
                 <div class="hof-table-container">
                     <table id="hof-table-classic">
                         <thead>
@@ -926,7 +945,7 @@ button:hover {
                 </div>
             </div>
             <div class="hof-column">
-                <h3>⏱️ 타임어택 모드</h3>
+                <h3>⏱️ 타임어택 모드 순위</h3>
                 <div class="hof-table-container">
                     <table id="hof-table-timeattack">
                         <thead>
