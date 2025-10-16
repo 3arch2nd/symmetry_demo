@@ -98,7 +98,7 @@ button:hover {
     display: none;
 }
 #mode-selection-page {
-    display: flex;
+    /* 초기 로딩 시 인라인 스타일로 display: flex를 설정하여 누락 방지 */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -799,7 +799,7 @@ button:hover {
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
     
     <div id="problem-page">
         <div class="problem-header">
@@ -880,7 +880,7 @@ button:hover {
 <div id="hof-popup-overlay" class="popup-overlay" style="display: none;">
     <div class="popup-hof popup-box">
         <button class="close-btn" onclick="closeHofPopup()">&times;</button>
-        <h3>🏆명예의 전당🏆</h3>
+        <h3>🏆 명예의 전당🏆</h3>
         <small id="hof-reset-message" style="display: none; color: #888; margin-top: -10px; margin-bottom: 10px;">
             순위는 자정마다 초기화됩니다.
         </small>
@@ -938,7 +938,1339 @@ button:hover {
 <script>
     const webAppUrl = 'https://patient-thunder-7347.bbglara.workers.dev/';
     const blockedWords = ['SEX', 'FUK', 'ASS', 'FUX', 'WTF']; 
-const _0x4dc7fe=_0x5564;(function(_0x396cc1,_0x2ba3e3){const _0x507405=_0x5564,_0x595265=_0x396cc1();while(!![]){try{const _0x12eb84=-parseInt(_0x507405(0x1e2))/0x1*(parseInt(_0x507405(0x1a7))/0x2)+parseInt(_0x507405(0x177))/0x3*(parseInt(_0x507405(0x1ba))/0x4)+-parseInt(_0x507405(0x163))/0x5+-parseInt(_0x507405(0x23e))/0x6*(-parseInt(_0x507405(0x16d))/0x7)+parseInt(_0x507405(0x1bf))/0x8+parseInt(_0x507405(0x18f))/0x9+parseInt(_0x507405(0x22d))/0xa*(-parseInt(_0x507405(0x1c2))/0xb);if(_0x12eb84===_0x2ba3e3)break;else _0x595265['push'](_0x595265['shift']());}catch(_0x599044){_0x595265['push'](_0x595265['shift']());}}}(_0xb6fd,0x21ef6));const timeOptions=[0x3,0x5,0x7];let selectedType='line',totalProblems=0x5,currentProblem=0x0,canvasMode=_0x4dc7fe(0x19d),score={'results':[]},currentProblemAttempts=0x0,selectedDifficulty='1',finalAccuracyValue=0x0,finalScoreValue=0x0,hasSubmittedScore=![],isExitingIntentionally=![],gameMode=_0x4dc7fe(0x15e),timeLimitInMinutes=0x3,remainingTime=0x0,timerInterval=null;const canvas=document[_0x4dc7fe(0x244)](_0x4dc7fe(0x1c4)),ctx=canvas['getContext']('2d'),canvasWrapper=document[_0x4dc7fe(0x209)](_0x4dc7fe(0x1fa));let GRID_SIZE,GRID_COUNT,HALF_COUNT,CENTER_POINT,MIN_COORD,MAX_COORD;const COLLINEARITY_THRESHOLD=0x1,MIN_ANGLE_COSINE=Math[_0x4dc7fe(0x249)](0x1e*Math['PI']/0xb4),MAX_ANGLE_COSINE=Math[_0x4dc7fe(0x249)](0x96*Math['PI']/0xb4),MIN_SLOPE_DIFF=0x2,MIN_DIST=0x2;let problemVertices=[],problemLines=[],userVertices=[],userLines=[],tempLineStart=null,hoveredLine=null,problemList=[];function setupGrid(){const _0x2e15dc=_0x4dc7fe;GRID_COUNT=0x10,MIN_COORD=0x2,MAX_COORD=0xe,GRID_SIZE=canvas[_0x2e15dc(0x1e6)]/GRID_COUNT,HALF_COUNT=GRID_COUNT/0x2,CENTER_POINT={'x':HALF_COUNT,'y':HALF_COUNT};}const allPages=['mode-selection-page',_0x4dc7fe(0x1ef),_0x4dc7fe(0x1d6),'final-result-page'];function showPage(_0x35de63){const _0x2c9dc6=_0x4dc7fe;allPages[_0x2c9dc6(0x179)](_0x302118=>{const _0x39acfd=_0x2c9dc6,_0x3b1956=document[_0x39acfd(0x244)](_0x302118);if(_0x3b1956){const _0x5ff7ca=_0x302118===_0x39acfd(0x19b)||_0x302118==='setup-page'?'flex':_0x39acfd(0x234);_0x3b1956[_0x39acfd(0x1ab)]['display']=_0x302118===_0x35de63?_0x5ff7ca:'none';}});const _0x32b161=document[_0x2c9dc6(0x244)](_0x2c9dc6(0x1b0));_0x32b161&&(_0x32b161[_0x2c9dc6(0x1ab)][_0x2c9dc6(0x254)]=_0x35de63==='mode-selection-page'||_0x35de63===_0x2c9dc6(0x1ef)?_0x2c9dc6(0x234):_0x2c9dc6(0x20e));}function resetGame(){const _0x22bb8a=_0x4dc7fe;stopTimer(),clearGameState(),isExitingIntentionally=![],selectedType=_0x22bb8a(0x21f),totalProblems=0x5,currentProblem=0x0,canvasMode='vertex',score={'results':[]},currentProblemAttempts=0x0,selectedDifficulty='1',hasSubmittedScore=![],gameMode=_0x22bb8a(0x15e),timeLimitInMinutes=0x3,remainingTime=0x0,problemList=[],userVertices=[],userLines=[],document[_0x22bb8a(0x244)]('problem-quantity')[_0x22bb8a(0x229)]='5',document[_0x22bb8a(0x244)]('time-limit-display')[_0x22bb8a(0x229)]='3분',document[_0x22bb8a(0x244)]('timer-display')[_0x22bb8a(0x1ab)][_0x22bb8a(0x254)]=_0x22bb8a(0x20e),document['getElementById']('problem-counter-display')[_0x22bb8a(0x1ab)][_0x22bb8a(0x254)]=_0x22bb8a(0x20e),document[_0x22bb8a(0x184)]('#type-select\x20button')[_0x22bb8a(0x179)](_0x23cdc9=>_0x23cdc9[_0x22bb8a(0x1b5)][_0x22bb8a(0x1d1)](_0x22bb8a(0x222))),document[_0x22bb8a(0x209)](_0x22bb8a(0x1d7))[_0x22bb8a(0x1b5)][_0x22bb8a(0x15b)](_0x22bb8a(0x222)),document[_0x22bb8a(0x184)](_0x22bb8a(0x1f5))[_0x22bb8a(0x179)](_0x2a6ea2=>_0x2a6ea2[_0x22bb8a(0x1b5)]['remove'](_0x22bb8a(0x222))),document[_0x22bb8a(0x209)](_0x22bb8a(0x178))[_0x22bb8a(0x1b5)][_0x22bb8a(0x15b)]('selected'),setupGrid(),document[_0x22bb8a(0x244)]('classic-settings')['style'][_0x22bb8a(0x254)]=_0x22bb8a(0x234),document[_0x22bb8a(0x244)](_0x22bb8a(0x168))['style'][_0x22bb8a(0x254)]=_0x22bb8a(0x20e),updateSettingsOverlay();}function isSamePoint(_0x1b915a,_0x4bd844){if(!_0x1b915a||!_0x4bd844)return![];return _0x1b915a['x']===_0x4bd844['x']&&_0x1b915a['y']===_0x4bd844['y'];}function isSameLine(_0x22cc59,_0x18bb07){if(!_0x22cc59||!_0x18bb07)return![];const _0x45f521=_0x22cc59['p1'],_0x5715e3=_0x22cc59['p2'],_0x1dccb0=_0x18bb07['p1'],_0x22e780=_0x18bb07['p2'];return isSamePoint(_0x45f521,_0x1dccb0)&&isSamePoint(_0x5715e3,_0x22e780)||isSamePoint(_0x45f521,_0x22e780)&&isSamePoint(_0x5715e3,_0x1dccb0);}function isLineExists(_0x32ca3a){const _0x36e84d=_0x4dc7fe;return userLines[_0x36e84d(0x18b)](_0xc6dae1=>isSameLine(_0xc6dae1,_0x32ca3a));}function getRandomInt(_0x46bd2b,_0x2e463){const _0x19a93a=_0x4dc7fe;return _0x46bd2b=Math[_0x19a93a(0x1ac)](_0x46bd2b),_0x2e463=Math[_0x19a93a(0x1f8)](_0x2e463),Math[_0x19a93a(0x1f8)](Math['random']()*(_0x2e463-_0x46bd2b+0x1))+_0x46bd2b;}function isTooClose(_0x24174c,_0x343d1f,_0x4ca832=MIN_DIST){const _0x22ec36=_0x4ca832**0x2;for(const _0x56fe56 of _0x343d1f){const _0x1eb43d=(_0x24174c['x']-_0x56fe56['x'])**0x2+(_0x24174c['y']-_0x56fe56['y'])**0x2;if(_0x1eb43d<_0x22ec36)return!![];}return![];}function isTooLinear(_0x4a253a,_0xfc1994,_0x39daf2){const _0x307a2e=_0x4dc7fe,_0x535cdf=(_0xfc1994['y']-_0x4a253a['y'])*(_0x39daf2['x']-_0xfc1994['x'])-(_0x39daf2['y']-_0xfc1994['y'])*(_0xfc1994['x']-_0x4a253a['x']);return Math[_0x307a2e(0x21d)](_0x535cdf)<COLLINEARITY_THRESHOLD;}function isTooSharpAngle(_0x3458e1,_0x2b6390,_0xac8a55){const _0x41c4cf=_0x4dc7fe,_0x3b88e4=_0x3458e1['x']-_0x2b6390['x'],_0x57d693=_0x3458e1['y']-_0x2b6390['y'],_0xe46408=_0xac8a55['x']-_0x2b6390['x'],_0x5687a1=_0xac8a55['y']-_0x2b6390['y'],_0x635d9c=_0x3b88e4*_0xe46408+_0x57d693*_0x5687a1,_0x9ca1fa=Math['sqrt'](_0x3b88e4*_0x3b88e4+_0x57d693*_0x57d693),_0x3d8273=Math[_0x41c4cf(0x1df)](_0xe46408*_0xe46408+_0x5687a1*_0x5687a1);if(_0x9ca1fa===0x0||_0x3d8273===0x0)return!![];const _0x174b1a=_0x635d9c/(_0x9ca1fa*_0x3d8273);return _0x174b1a>MIN_ANGLE_COSINE||_0x174b1a<MAX_ANGLE_COSINE;}function isTooWeakSlope(_0x35c2cf,_0x5ab872){const _0x33acbf=_0x4dc7fe,_0x491a17=Math[_0x33acbf(0x21d)](_0x5ab872['x']-_0x35c2cf['x']),_0x32157a=Math[_0x33acbf(0x21d)](_0x5ab872['y']-_0x35c2cf['y']);return _0x491a17<=MIN_SLOPE_DIFF||_0x32157a<=MIN_SLOPE_DIFF||_0x491a17>0x0&&_0x32157a>0x0&&Math['abs'](_0x32157a/_0x491a17)<0x1;}function isProblemTooLinear(_0x34c603,_0x5ea17a){const _0x102672=_0x4dc7fe;if(_0x34c603[_0x102672(0x1db)]<0x2)return![];const _0x152740=_0x34c603[_0x34c603[_0x102672(0x1db)]-0x2],_0x33c178=_0x34c603[_0x34c603[_0x102672(0x1db)]-0x1];for(let _0xaf8606=0x0;_0xaf8606<_0x34c603[_0x102672(0x1db)]-0x1;_0xaf8606++)if(isTooLinear(_0x34c603[_0xaf8606],_0x33c178,_0x5ea17a))return!![];return isTooLinear(_0x152740,_0x33c178,_0x5ea17a);}function isProblemTooSharp(_0x2591fe,_0x1abb4f){const _0x5b68a7=_0x4dc7fe;if(_0x2591fe[_0x5b68a7(0x1db)]<0x2)return![];const _0x332d61=_0x2591fe[_0x2591fe[_0x5b68a7(0x1db)]-0x2],_0x41a7df=_0x2591fe[_0x2591fe[_0x5b68a7(0x1db)]-0x1],_0x588a55=_0x6e8d95=>_0x6e8d95['x']===HALF_COUNT||_0x6e8d95['y']===HALF_COUNT||_0x6e8d95['x']===_0x6e8d95['y'];if(_0x588a55(_0x332d61)&&_0x588a55(_0x41a7df)&&_0x588a55(_0x1abb4f))return![];for(let _0xcf399d=0x1;_0xcf399d<_0x2591fe[_0x5b68a7(0x1db)];_0xcf399d++)if(isTooSharpAngle(_0x2591fe[_0xcf399d-0x1],_0x2591fe[_0xcf399d],_0x1abb4f))return!![];return isTooSharpAngle(_0x332d61,_0x41a7df,_0x1abb4f);}function distSq(_0x339c8a,_0x3d2017){return(_0x339c8a['x']-_0x3d2017['x'])**0x2+(_0x339c8a['y']-_0x3d2017['y'])**0x2;}function calculateSymmetricPoint(_0x229874,_0x588e3e,_0x213bb0=![],_0x58dbc6=_0x4dc7fe(0x257)){const _0x3e6e49=_0x4dc7fe;let _0x9cba81,_0x3b3b40;const _0x5a68b9=HALF_COUNT;if(_0x588e3e===_0x3e6e49(0x21f)){if(_0x213bb0)_0x9cba81=_0x229874['y'],_0x3b3b40=_0x229874['x'];else _0x58dbc6===_0x3e6e49(0x183)?(_0x9cba81=_0x229874['x'],_0x3b3b40=0x2*_0x5a68b9-_0x229874['y']):(_0x9cba81=0x2*_0x5a68b9-_0x229874['x'],_0x3b3b40=_0x229874['y']);}else{if(_0x588e3e==='point')_0x9cba81=0x2*_0x5a68b9-_0x229874['x'],_0x3b3b40=0x2*_0x5a68b9-_0x229874['y'];else return _0x229874;}return{'x':Math[_0x3e6e49(0x24f)](_0x9cba81),'y':Math[_0x3e6e49(0x24f)](_0x3b3b40)};}function createSequentialLines(_0x376a6b,_0x4bd021=![]){const _0x1ffaed=_0x4dc7fe,_0x17f60d=[];if(_0x376a6b[_0x1ffaed(0x1db)]<0x2)return _0x17f60d;const _0x1026c1=_0x376a6b['length'];for(let _0x4f4e7d=0x0;_0x4f4e7d<_0x1026c1;_0x4f4e7d++){const _0x20c665=_0x376a6b[_0x4f4e7d],_0x5425c9=_0x376a6b[(_0x4f4e7d+0x1)%_0x1026c1];if(!_0x4bd021&&_0x4f4e7d===_0x1026c1-0x1)break;_0x17f60d['push']({'p1':_0x20c665,'p2':_0x5425c9});}return _0x17f60d;}function findPointSymmetricBoundary(_0x429e06){const _0x408d7c=_0x4dc7fe;if(_0x429e06[_0x408d7c(0x1db)]<0x3)return _0x429e06;const _0x368ed3=CENTER_POINT,_0x339030=_0x429e06[_0x408d7c(0x24e)](_0x57a78c=>isSamePoint(_0x57a78c,_0x368ed3)),_0x4797e9=_0x429e06['filter'](_0x370edd=>!isSamePoint(_0x370edd,_0x368ed3));_0x4797e9[_0x408d7c(0x248)]((_0x30d066,_0x13c259)=>Math[_0x408d7c(0x25b)](_0x30d066['y']-_0x368ed3['y'],_0x30d066['x']-_0x368ed3['x'])-Math['atan2'](_0x13c259['y']-_0x368ed3['y'],_0x13c259['x']-_0x368ed3['x']));let _0x32eebe=[];if(_0x339030)_0x32eebe[_0x408d7c(0x161)](_0x339030);return _0x32eebe=_0x32eebe[_0x408d7c(0x252)](_0x4797e9),_0x32eebe['filter']((_0x6f3d3d,_0x5de490,_0x386ca8)=>_0x5de490===_0x386ca8[_0x408d7c(0x176)](_0x12856d=>isSamePoint(_0x12856d,_0x6f3d3d)));}function sortSlantedAxisVertices(_0x66715c){const _0x48445a=_0x4dc7fe,_0x2e3836=_0x66715c[_0x48445a(0x1a2)](_0x222856=>_0x222856['x']===_0x222856['y'])[_0x48445a(0x248)]((_0x199eec,_0x4194d0)=>_0x199eec['y']-_0x4194d0['y']),_0x1ccc5e=_0x66715c[_0x48445a(0x1a2)](_0xdc3833=>_0xdc3833['x']!==_0xdc3833['y']),_0x3ece87=_0x2e3836[0x0],_0x33317a=_0x2e3836[0x1],_0x57a4fb=_0x1ccc5e[_0x48445a(0x1a2)](_0x41cfeb=>_0x41cfeb['y']<_0x41cfeb['x']),_0x2811b8=_0x1ccc5e[_0x48445a(0x1a2)](_0xf163dd=>_0xf163dd['y']>_0xf163dd['x']);return _0x57a4fb[_0x48445a(0x248)]((_0x304ee7,_0x2cf65e)=>Math[_0x48445a(0x25b)](_0x304ee7['y']-_0x3ece87['y'],_0x304ee7['x']-_0x3ece87['x'])-Math[_0x48445a(0x25b)](_0x2cf65e['y']-_0x3ece87['y'],_0x2cf65e['x']-_0x3ece87['x'])),_0x2811b8[_0x48445a(0x248)]((_0x1def0c,_0x566dca)=>Math[_0x48445a(0x25b)](_0x566dca['y']-_0x33317a['y'],_0x566dca['x']-_0x33317a['x'])-Math[_0x48445a(0x25b)](_0x1def0c['y']-_0x33317a['y'],_0x1def0c['x']-_0x33317a['x'])),[_0x3ece87,..._0x57a4fb,_0x33317a,..._0x2811b8];}function generateRandomProblem(_0x1dc4ce,_0x559bf1=null){const _0x284add=_0x4dc7fe,_0x421951=0x64;if(_0x1dc4ce===_0x284add(0x21f)){let _0x544487,_0x44be73,_0x7029bb,_0x19a7f5=![],_0x4a3e91=_0x284add(0x257);const _0x47186c=selectedDifficulty===_0x284add(0x18c)?'1':selectedDifficulty;if(_0x559bf1)_0x544487=_0x559bf1,_0x44be73=MIN_COORD,_0x7029bb=MAX_COORD,_0x19a7f5=![],_0x4a3e91=Math[_0x284add(0x1c1)]()<0.5?'vertical':_0x284add(0x183);else _0x47186c==0x2?(_0x19a7f5=Math[_0x284add(0x1c1)]()<0.5,_0x19a7f5?(_0x544487=getRandomInt(0x3,0x4),_0x44be73=MIN_COORD,_0x7029bb=MAX_COORD,_0x4a3e91=_0x284add(0x170)):(_0x544487=getRandomInt(0x5,0x6),_0x44be73=MIN_COORD-0x1,_0x7029bb=MAX_COORD+0x1,_0x4a3e91=Math[_0x284add(0x1c1)]()<0.5?_0x284add(0x257):_0x284add(0x183))):(_0x19a7f5=![],_0x544487=0x4,_0x44be73=MIN_COORD,_0x7029bb=MAX_COORD,_0x4a3e91=Math[_0x284add(0x1c1)]()<0.5?_0x284add(0x257):'horizontal');if(_0x19a7f5){const _0x2b84cd={'x':HALF_COUNT,'y':HALF_COUNT},_0x3de0c1=getRandomInt(Math[_0x284add(0x1f8)](GRID_COUNT*0.15),Math[_0x284add(0x1f8)](GRID_COUNT*0.35)),_0x2bdfd9={'x':_0x2b84cd['x']-_0x3de0c1,'y':_0x2b84cd['y']-_0x3de0c1},_0x1d6f94={'x':_0x2b84cd['x']+_0x3de0c1,'y':_0x2b84cd['y']+_0x3de0c1};let _0x12ecbb=[_0x2bdfd9];for(let _0xa54f0c=0x0;_0xa54f0c<_0x544487-0x2;_0xa54f0c++){let _0x50abf2,_0x293d60=![],_0x283249=0x0;while(!_0x293d60&&_0x283249<_0x421951){let _0x4e3567=getRandomInt(_0x44be73,_0x7029bb),_0x642f27=getRandomInt(_0x44be73,_0x4e3567-0x1);_0x50abf2={'x':_0x4e3567,'y':_0x642f27};let _0x5dc432=!![];_0x12ecbb['length']>=0x2&&(isTooSharpAngle(_0x12ecbb[_0x12ecbb[_0x284add(0x1db)]-0x2],_0x12ecbb[_0x12ecbb['length']-0x1],_0x50abf2)&&(_0x5dc432=![]));if(_0x12ecbb['length']>0x0){let _0x5c6af3=calculateSymmetricPoint(_0x50abf2,_0x284add(0x21f),!![]);isTooSharpAngle(_0x12ecbb[_0x12ecbb[_0x284add(0x1db)]-0x1],_0x50abf2,_0x5c6af3)&&(_0x5dc432=![]);}_0x5dc432&&!isTooClose(_0x50abf2,_0x12ecbb)&&!isProblemTooLinear(_0x12ecbb,_0x50abf2)&&(_0x12ecbb[_0x284add(0x161)](_0x50abf2),_0x293d60=!![]),_0x283249++;}if(!_0x293d60)return null;}_0x12ecbb[_0x284add(0x161)](_0x1d6f94);let _0x404183=[..._0x12ecbb];if(_0x404183['length']<0x3)return null;if(isTooLinear(_0x404183[_0x404183['length']-0x2],_0x404183[_0x404183['length']-0x1],_0x404183[0x0])||isTooSharpAngle(_0x404183[_0x404183[_0x284add(0x1db)]-0x2],_0x404183[_0x404183[_0x284add(0x1db)]-0x1],_0x404183[0x0]))return null;let _0x2515b9=sortSlantedAxisVertices(_0x404183);if(_0x2515b9['length']>=0x3)for(let _0x95b658=0x0;_0x95b658<_0x2515b9['length']-0x2;_0x95b658++){if(isTooLinear(_0x2515b9[_0x95b658],_0x2515b9[_0x95b658+0x1],_0x2515b9[_0x95b658+0x2]))return null;}const _0x4a0fda=createSequentialLines(_0x2515b9,![]),_0x2d16b5=_0x4a0fda[_0x284add(0x1a2)](_0x1ea1de=>(_0x1ea1de['p1']['x']+_0x1ea1de['p2']['x'])/0x2>(_0x1ea1de['p1']['y']+_0x1ea1de['p2']['y'])/0x2);let _0x2e7ff1=_0x2d16b5[_0x284add(0x169)]((_0x3c18a7,_0x5a3867)=>{const _0x43e1ac=_0x284add;if(!_0x3c18a7['some'](_0x26f286=>isSamePoint(_0x26f286,_0x5a3867['p1'])))_0x3c18a7[_0x43e1ac(0x161)](_0x5a3867['p1']);if(!_0x3c18a7[_0x43e1ac(0x18b)](_0x1b0f5c=>isSamePoint(_0x1b0f5c,_0x5a3867['p2'])))_0x3c18a7[_0x43e1ac(0x161)](_0x5a3867['p2']);return _0x3c18a7;},[]);if(_0x2e7ff1[_0x284add(0x1a2)](_0x283c2b=>_0x283c2b['x']===_0x283c2b['y'])[_0x284add(0x1db)]<0x2)return null;return{'type':_0x284add(0x21f),'isSlantedAxis':!![],'axisDirection':'slanted','initialVertices':_0x2e7ff1,'initialLines':_0x2d16b5,'allVertices':_0x2515b9,'allLines':_0x4a0fda};}else{let _0x305f58;if(_0x4a3e91==='vertical'){const _0x110dc3={'x':HALF_COUNT,'y':getRandomInt(_0x44be73,HALF_COUNT-0x2)},_0xbfb9ad={'x':HALF_COUNT,'y':getRandomInt(HALF_COUNT+0x2,_0x7029bb)};let _0x21707d=[];for(let _0x2dfce4=0x0;_0x2dfce4<_0x544487-0x2;_0x2dfce4++){let _0x4e0682,_0x3c10e1=![],_0x402b5c=0x0;while(!_0x3c10e1&&_0x402b5c<_0x421951){_0x4e0682={'x':getRandomInt(_0x44be73,HALF_COUNT-0x1),'y':getRandomInt(_0x110dc3['y'],_0xbfb9ad['y'])};let _0x5bcad9=!isTooClose(_0x4e0682,[..._0x21707d,_0x110dc3,_0xbfb9ad]);_0x21707d['length']>0x0&&isTooWeakSlope(_0x21707d[_0x21707d['length']-0x1],_0x4e0682)&&(_0x5bcad9=![]),_0x5bcad9&&(_0x21707d[_0x284add(0x161)](_0x4e0682),_0x3c10e1=!![]),_0x402b5c++;}if(!_0x3c10e1)return null;}_0x21707d[_0x284add(0x248)]((_0x470f80,_0x1a0155)=>_0x470f80['y']-_0x1a0155['y']),_0x305f58=[_0x110dc3,..._0x21707d,_0xbfb9ad];}else{const _0x264605={'x':getRandomInt(_0x44be73,HALF_COUNT-0x2),'y':HALF_COUNT},_0x33fc6f={'x':getRandomInt(HALF_COUNT+0x2,_0x7029bb),'y':HALF_COUNT};let _0x2926e9=[];for(let _0xb5e588=0x0;_0xb5e588<_0x544487-0x2;_0xb5e588++){let _0x24c11b,_0x39ca5d=![],_0x566fd2=0x0;while(!_0x39ca5d&&_0x566fd2<_0x421951){_0x24c11b={'x':getRandomInt(_0x264605['x'],_0x33fc6f['x']),'y':getRandomInt(_0x44be73,HALF_COUNT-0x1)};let _0x52ea72=!isTooClose(_0x24c11b,[..._0x2926e9,_0x264605,_0x33fc6f]);_0x2926e9['length']>0x0&&isTooWeakSlope(_0x2926e9[_0x2926e9[_0x284add(0x1db)]-0x1],_0x24c11b)&&(_0x52ea72=![]),_0x52ea72&&(_0x2926e9[_0x284add(0x161)](_0x24c11b),_0x39ca5d=!![]),_0x566fd2++;}if(!_0x39ca5d)return null;}_0x2926e9['sort']((_0x27cb13,_0x4cb9e8)=>_0x27cb13['x']-_0x4cb9e8['x']),_0x305f58=[_0x264605,..._0x2926e9,_0x33fc6f];}if(_0x305f58['length']<0x2)return null;if(_0x305f58['length']>=0x3)for(let _0x1840b3=0x0;_0x1840b3<_0x305f58['length']-0x2;_0x1840b3++){if(isTooLinear(_0x305f58[_0x1840b3],_0x305f58[_0x1840b3+0x1],_0x305f58[_0x1840b3+0x2]))return null;}let _0x5715f8=_0x305f58['concat'](_0x305f58[_0x284add(0x1da)](_0x5a9c50=>calculateSymmetricPoint(_0x5a9c50,'line',![],_0x4a3e91))[_0x284add(0x1ee)]());return _0x5715f8=_0x5715f8[_0x284add(0x1a2)]((_0x3a9259,_0x53c429,_0x571681)=>_0x53c429===_0x571681[_0x284add(0x176)](_0x4a9d0e=>isSamePoint(_0x4a9d0e,_0x3a9259))),{'type':'line','isSlantedAxis':![],'axisDirection':_0x4a3e91,'initialVertices':_0x305f58,'initialLines':createSequentialLines(_0x305f58,![]),'allVertices':_0x5715f8,'allLines':createSequentialLines(_0x5715f8,!![])};}}else{if(_0x1dc4ce==='point'){const _0x1e08ab=selectedDifficulty==='practice'?'1':selectedDifficulty,_0x1ebacc=_0x559bf1?_0x559bf1:_0x1e08ab==0x1?0x4:getRandomInt(0x5,0x6);let _0x22007b=[];const _0xe94189=Math[_0x284add(0x1c1)]()<0.5;let _0x2cc3a6,_0x4c5b24;if(_0xe94189){const _0xea235d=CENTER_POINT['y'],_0x55d11f=getRandomInt(Math[_0x284add(0x1f8)](GRID_COUNT*0.15),Math[_0x284add(0x1f8)](GRID_COUNT*0.35));_0x2cc3a6={'x':CENTER_POINT['x']-_0x55d11f,'y':_0xea235d},_0x4c5b24={'x':CENTER_POINT['x']+_0x55d11f,'y':_0xea235d};}else{const _0x466146=CENTER_POINT['x'],_0x2403e2=getRandomInt(Math[_0x284add(0x1f8)](GRID_COUNT*0.15),Math[_0x284add(0x1f8)](GRID_COUNT*0.35));_0x2cc3a6={'x':_0x466146,'y':CENTER_POINT['y']-_0x2403e2},_0x4c5b24={'x':_0x466146,'y':CENTER_POINT['y']+_0x2403e2};}_0x22007b[_0x284add(0x161)](_0x2cc3a6);let _0x31ce78=[];for(let _0x49afab=0x0;_0x49afab<_0x1ebacc-0x2;_0x49afab++){let _0x4bda62,_0x317c45=![],_0x5c50ba=0x0;while(!_0x317c45&&_0x5c50ba<_0x421951){let _0x280726,_0x29afb4;_0xe94189?(_0x280726=getRandomInt(MIN_COORD,MAX_COORD),_0x29afb4=getRandomInt(MIN_COORD,CENTER_POINT['y']-0x1)):(_0x280726=getRandomInt(MIN_COORD,CENTER_POINT['x']-0x1),_0x29afb4=getRandomInt(MIN_COORD,MAX_COORD)),_0x4bda62={'x':_0x280726,'y':_0x29afb4},!isTooClose(_0x4bda62,[..._0x22007b,..._0x31ce78])&&(_0x31ce78[_0x284add(0x161)](_0x4bda62),_0x317c45=!![]),_0x5c50ba++;}if(!_0x317c45)return null;}_0x31ce78[_0x284add(0x248)]((_0x29f010,_0x28f4e7)=>Math['atan2'](_0x29f010['y']-CENTER_POINT['y'],_0x29f010['x']-CENTER_POINT['x'])-Math['atan2'](_0x28f4e7['y']-CENTER_POINT['y'],_0x28f4e7['x']-CENTER_POINT['x'])),_0x22007b=_0x22007b['concat'](_0x31ce78),_0x22007b[_0x284add(0x161)](_0x4c5b24);let _0x464708=[],_0x4ac4ee=new Set();_0x22007b['forEach'](_0x45f0bd=>{const _0x1d427f=_0x284add,_0x1e48bb=_0x45f0bd['x']+','+_0x45f0bd['y'];if(!_0x4ac4ee[_0x1d427f(0x1b9)](_0x1e48bb)){_0x464708['push'](_0x45f0bd),_0x4ac4ee[_0x1d427f(0x15b)](_0x1e48bb);const _0x3fe796=calculateSymmetricPoint(_0x45f0bd,_0x1d427f(0x1c8)),_0x1109e1=_0x3fe796['x']+','+_0x3fe796['y'];!_0x4ac4ee[_0x1d427f(0x1b9)](_0x1109e1)&&(_0x464708[_0x1d427f(0x161)](_0x3fe796),_0x4ac4ee[_0x1d427f(0x15b)](_0x1109e1));}}),_0x464708=findPointSymmetricBoundary(_0x464708);if(_0x464708[_0x284add(0x1db)]>=0x3)for(let _0x2a5084=0x0;_0x2a5084<_0x464708[_0x284add(0x1db)];_0x2a5084++){const _0x4a3bbd=_0x464708[_0x284add(0x1db)],_0x450e68=_0x464708[(_0x2a5084-0x1+_0x4a3bbd)%_0x4a3bbd],_0x460520=_0x464708[_0x2a5084],_0x51274d=_0x464708[(_0x2a5084+0x1)%_0x4a3bbd];if(isTooLinear(_0x450e68,_0x460520,_0x51274d)||isTooSharpAngle(_0x450e68,_0x460520,_0x51274d))return null;}const _0x4fae6a=createSequentialLines(_0x464708,!![]),_0x44ec6a=[],_0x12d58f=new Set(_0x22007b[_0x284add(0x1da)](_0x4a3734=>_0x4a3734['x']+','+_0x4a3734['y']));return _0x4fae6a['forEach'](_0x491c81=>{const _0x86dac8=_0x284add;_0x12d58f[_0x86dac8(0x1b9)](_0x491c81['p1']['x']+','+_0x491c81['p1']['y'])&&_0x12d58f[_0x86dac8(0x1b9)](_0x491c81['p2']['x']+','+_0x491c81['p2']['y'])&&_0x44ec6a['push'](_0x491c81);}),{'type':_0x284add(0x1c8),'initialVertices':_0x22007b,'initialLines':_0x44ec6a,'allVertices':_0x464708,'allLines':_0x4fae6a};}}return null;}function initializeSetupListeners(){const _0x147777=_0x4dc7fe;document['querySelectorAll']('#type-select\x20button')[_0x147777(0x179)](_0x3d2a15=>{const _0x2d67df=_0x147777;_0x3d2a15[_0x2d67df(0x230)](_0x2d67df(0x1f4),handleTypeSelect);}),document[_0x147777(0x184)](_0x147777(0x1f5))[_0x147777(0x179)](_0x11aeec=>{const _0x551af0=_0x147777;_0x11aeec['addEventListener'](_0x551af0(0x1f4),handleDifficultySelect);}),document[_0x147777(0x244)](_0x147777(0x1c0))[_0x147777(0x230)]('click',()=>changeQuantity(-0x5)),document[_0x147777(0x244)](_0x147777(0x219))[_0x147777(0x230)](_0x147777(0x1f4),()=>changeQuantity(0x5)),document[_0x147777(0x244)](_0x147777(0x16c))['addEventListener'](_0x147777(0x1f4),()=>changeTimeLimit(-0x1)),document['getElementById'](_0x147777(0x1d8))[_0x147777(0x230)]('click',()=>changeTimeLimit(0x1));}function _0x5564(_0x38c805,_0x451848){const _0xb6fda8=_0xb6fd();return _0x5564=function(_0x556472,_0x1d84f8){_0x556472=_0x556472-0x157;let _0x11c466=_0xb6fda8[_0x556472];return _0x11c466;},_0x5564(_0x38c805,_0x451848);}function updateSettingsOverlay(){const _0x5173cf=_0x4dc7fe,_0x15a37=document[_0x5173cf(0x244)](_0x5173cf(0x191)),_0x3c28aa=document[_0x5173cf(0x244)]('overlay-message'),_0x2d23a4=selectedDifficulty===_0x5173cf(0x18c);_0x2d23a4?(_0x15a37[_0x5173cf(0x1ab)][_0x5173cf(0x254)]=_0x5173cf(0x19f),gameMode===_0x5173cf(0x15e)?_0x3c28aa[_0x5173cf(0x203)]=_0x5173cf(0x164):_0x3c28aa['innerHTML']=_0x5173cf(0x162)):_0x15a37[_0x5173cf(0x1ab)]['display']=_0x5173cf(0x20e);}function selectGameMode(_0x5c65d0){const _0x5f0447=_0x4dc7fe;gameMode=_0x5c65d0;const _0x7eb4a=document[_0x5f0447(0x244)](_0x5f0447(0x1b1)),_0x1256ec=document[_0x5f0447(0x244)](_0x5f0447(0x168));gameMode==='classic'?(_0x7eb4a[_0x5f0447(0x1ab)][_0x5f0447(0x254)]='block',_0x1256ec[_0x5f0447(0x1ab)][_0x5f0447(0x254)]=_0x5f0447(0x20e)):(_0x7eb4a[_0x5f0447(0x1ab)]['display']=_0x5f0447(0x20e),_0x1256ec[_0x5f0447(0x1ab)]['display']=_0x5f0447(0x234)),updateSettingsOverlay(),showPage(_0x5f0447(0x1ef));}function changeTimeLimit(_0x2e61cf){const _0x1df532=_0x4dc7fe,_0x4fb5c9=document[_0x1df532(0x244)]('time-limit-display'),_0x2010c4=timeOptions[_0x1df532(0x1d9)](timeLimitInMinutes);let _0x53e5b6=_0x2010c4+_0x2e61cf;if(_0x53e5b6<0x0)_0x53e5b6=timeOptions[_0x1df532(0x1db)]-0x1;else _0x53e5b6>=timeOptions['length']&&(_0x53e5b6=0x0);timeLimitInMinutes=timeOptions[_0x53e5b6],_0x4fb5c9[_0x1df532(0x229)]=timeLimitInMinutes+'분';}function nextProblem(){const _0x4f0daa=_0x4dc7fe;closePopup(),currentProblem++,currentProblemAttempts=0x0,userVertices=[],userLines=[];if(gameMode==='timeAttack'){if(timerInterval){let _0x338bde=null,_0x46e1ce=0x0;const _0x20225f=0x64;while(!_0x338bde&&_0x46e1ce<_0x20225f){let _0x5c4fba=selectedType===_0x4f0daa(0x23d)?Math['random']()<0.5?_0x4f0daa(0x21f):'point':selectedType;_0x338bde=generateRandomProblem(_0x5c4fba),_0x46e1ce++;}if(_0x338bde)problemList[_0x4f0daa(0x161)](_0x338bde);else{stopTimer(),showFinalResult();return;}}else{showFinalResult();return;}}if(gameMode===_0x4f0daa(0x15e)&&currentProblem>=totalProblems){showFinalResult();return;}loadProblem(),saveGameState();}function handleTypeSelect(_0x283657){const _0x1d3c0e=_0x4dc7fe;document[_0x1d3c0e(0x184)](_0x1d3c0e(0x253))[_0x1d3c0e(0x179)](_0x2647c9=>_0x2647c9[_0x1d3c0e(0x1b5)]['remove']('selected')),_0x283657[_0x1d3c0e(0x221)][_0x1d3c0e(0x1b5)]['add']('selected'),selectedType=_0x283657[_0x1d3c0e(0x221)][_0x1d3c0e(0x22e)](_0x1d3c0e(0x202));}function handleDifficultySelect(_0x18200e){const _0x2a641d=_0x4dc7fe;document[_0x2a641d(0x184)]('#difficulty-select\x20button')[_0x2a641d(0x179)](_0x687c8f=>_0x687c8f[_0x2a641d(0x1b5)][_0x2a641d(0x1d1)]('selected')),_0x18200e['currentTarget']['classList']['add'](_0x2a641d(0x222)),selectedDifficulty=_0x18200e[_0x2a641d(0x221)][_0x2a641d(0x22e)](_0x2a641d(0x194)),updateSettingsOverlay();}function changeQuantity(_0x4d2813){const _0xb32747=_0x4dc7fe,_0x7bc09d=parseInt(document['getElementById'](_0xb32747(0x20b))[_0xb32747(0x229)]);let _0x4cb35f=_0x7bc09d+_0x4d2813;if(_0x4cb35f<0x5)_0x4cb35f=0x5;if(_0x4cb35f>0x32)_0x4cb35f=0x32;document[_0xb32747(0x244)]('problem-quantity')[_0xb32747(0x229)]=_0x4cb35f,totalProblems=_0x4cb35f;}function generateProblemWithRetry(_0x12ce28,_0x2d18c5=null){let _0x5be0da=null,_0x1cb539=0x0;const _0x3100f4=0x64;while(!_0x5be0da&&_0x1cb539<_0x3100f4){_0x5be0da=generateRandomProblem(_0x12ce28,_0x2d18c5),_0x1cb539++;}return _0x5be0da;}function startQuiz(){const _0x2d4f3b=_0x4dc7fe;currentProblem=0x0,score={'results':[]},currentProblemAttempts=0x0,userVertices=[],userLines=[],tempLineStart=null,hoveredLine=null,problemList=[],hasSubmittedScore=![];if(selectedDifficulty===_0x2d4f3b(0x18c)){gameMode===_0x2d4f3b(0x1d2)&&(timeLimitInMinutes=0x2);totalProblems=0x3;if(selectedType===_0x2d4f3b(0x21f))problemList[_0x2d4f3b(0x161)](generateProblemWithRetry('line',0x3)),problemList[_0x2d4f3b(0x161)](generateProblemWithRetry('line',0x4)),problemList['push'](generateProblemWithRetry(_0x2d4f3b(0x21f),0x5));else selectedType===_0x2d4f3b(0x1c8)?(problemList['push'](generateProblemWithRetry(_0x2d4f3b(0x1c8),0x4)),problemList[_0x2d4f3b(0x161)](generateProblemWithRetry(_0x2d4f3b(0x1c8),0x4)),problemList[_0x2d4f3b(0x161)](generateProblemWithRetry('point',0x4))):(problemList[_0x2d4f3b(0x161)](generateProblemWithRetry('line',0x3)),problemList[_0x2d4f3b(0x161)](generateProblemWithRetry('line',0x4)),problemList[_0x2d4f3b(0x161)](generateRandomProblem(_0x2d4f3b(0x1c8),0x4)));problemList=problemList[_0x2d4f3b(0x1a2)](_0x14068d=>_0x14068d!==null),totalProblems=problemList[_0x2d4f3b(0x1db)];}else{let _0x51d8d8=gameMode===_0x2d4f3b(0x15e)?totalProblems:0x1,_0x1c3b83=0x0;const _0x743193=_0x51d8d8*0x14;let _0x4071b5=new Set();while(problemList[_0x2d4f3b(0x1db)]<_0x51d8d8&&_0x1c3b83<_0x743193){let _0x1c3556=selectedType===_0x2d4f3b(0x23d)?Math[_0x2d4f3b(0x1c1)]()<0.5?_0x2d4f3b(0x21f):_0x2d4f3b(0x1c8):selectedType;const _0x5869bc=generateRandomProblem(_0x1c3556);if(_0x5869bc&&_0x5869bc[_0x2d4f3b(0x1ca)][_0x2d4f3b(0x1db)]>=0x2){const _0x2862cf=JSON[_0x2d4f3b(0x1f2)](_0x5869bc[_0x2d4f3b(0x1ca)][_0x2d4f3b(0x1da)](_0x5756fc=>_0x5756fc['x']+','+_0x5756fc['y'])[_0x2d4f3b(0x248)]());!_0x4071b5['has'](_0x2862cf)&&(problemList['push'](_0x5869bc),_0x4071b5[_0x2d4f3b(0x15b)](_0x2862cf));}_0x1c3b83++;}gameMode===_0x2d4f3b(0x15e)&&(totalProblems=problemList['length']);}if(problemList['length']===0x0){alert('문제\x20생성에\x20실패했습니다.\x20다른\x20설정으로\x20다시\x20시도해\x20주세요.'),location[_0x2d4f3b(0x1d4)]();return;}showPage('problem-page');if(gameMode===_0x2d4f3b(0x1d2))startTimer();loadProblem();}function loadProblem(){const _0x20927b=_0x4dc7fe,_0x4bd3ef=gameMode===_0x20927b(0x1d2);if(!_0x4bd3ef&&currentProblem>=totalProblems&&totalProblems>0x0){showFinalResult();return;}if(_0x4bd3ef&&currentProblem>=problemList['length']&&!timerInterval){showFinalResult();return;}const _0x55debd=document[_0x20927b(0x244)]('timer-display'),_0xc03dec=document['getElementById'](_0x20927b(0x243));_0x4bd3ef?(_0xc03dec[_0x20927b(0x1ab)]['display']='none',_0x55debd[_0x20927b(0x1ab)]['display']=_0x20927b(0x234)):(_0xc03dec[_0x20927b(0x1ab)]['display']=_0x20927b(0x234),_0x55debd['style'][_0x20927b(0x254)]='none',_0xc03dec['textContent']=_0x20927b(0x20f)+(totalProblems-(currentProblem+0x1))+'개');const _0xa00f0b=problemList[currentProblem];if(!_0xa00f0b){console[_0x20927b(0x199)]('Problem\x20could\x20not\x20be\x20loaded.',{'currentProblem':currentProblem,'problemList':problemList}),showFinalResult();return;}const _0x4b84f1=_0xa00f0b[_0x20927b(0x1eb)]==='line'?_0x20927b(0x1c5):_0x20927b(0x19a);let _0x5d16a0=currentProblem+0x1+_0x20927b(0x167)+_0x4b84f1+')';const _0x28ef74=_0xa00f0b[_0x20927b(0x1eb)]===_0x20927b(0x21f)?'선대칭도형':_0x20927b(0x24b);let _0x2cff7f='아래\x20도형은\x20'+_0x28ef74+'입니다.\x20나머지\x20부분을\x20완성해\x20주세요.';window[_0x20927b(0x16e)]<0x1e0&&(_0x5d16a0=currentProblem+0x1+_0x20927b(0x24c)+_0x4b84f1+')',_0x2cff7f='아래\x20도형은\x20'+_0x28ef74+_0x20927b(0x186)),document[_0x20927b(0x244)]('problem-number')[_0x20927b(0x203)]=_0x5d16a0,document[_0x20927b(0x244)](_0x20927b(0x1ce))[_0x20927b(0x203)]=_0x2cff7f,document['getElementById']('check-answer-btn')[_0x20927b(0x1ab)][_0x20927b(0x254)]=_0x20927b(0x234),document[_0x20927b(0x244)](_0x20927b(0x187))['style'][_0x20927b(0x254)]='none',closePopup(),problemVertices=_0xa00f0b[_0x20927b(0x1ca)],problemLines=_0xa00f0b['initialLines'],tempLineStart=null,hoveredLine=null,setCanvasMode(_0x20927b(0x19d)),redrawCanvas();}function clearCanvas(_0x2ada21){const _0x48722a=_0x4dc7fe;_0x2ada21&&(userVertices=[],userLines=[],tempLineStart=null,hoveredLine=null),redrawCanvas(),setCanvasMode(_0x48722a(0x19d)),closePopup(),document[_0x48722a(0x244)](_0x48722a(0x217))[_0x48722a(0x1ab)][_0x48722a(0x254)]='block',document[_0x48722a(0x244)](_0x48722a(0x187))[_0x48722a(0x1ab)][_0x48722a(0x254)]=_0x48722a(0x20e);}function renderProblemVertices(){const _0x597ca2=_0x4dc7fe;document['querySelectorAll'](_0x597ca2(0x15c))[_0x597ca2(0x179)](_0x559c5e=>_0x559c5e[_0x597ca2(0x1d1)]()),problemVertices['forEach'](_0x17853b=>{const _0xc93611=_0x597ca2,_0x499372=document[_0xc93611(0x1a8)](_0xc93611(0x1de));_0x499372[_0xc93611(0x15a)]=_0xc93611(0x1b4),_0x499372['style'][_0xc93611(0x173)]=_0x17853b['x']/GRID_COUNT*0x64+'%',_0x499372[_0xc93611(0x1ab)][_0xc93611(0x1b3)]=_0x17853b['y']/GRID_COUNT*0x64+'%',canvasWrapper[_0xc93611(0x247)](_0x499372);});}function drawGrid(){const _0x178595=_0x4dc7fe;ctx['strokeStyle']=_0x178595(0x205),ctx[_0x178595(0x225)]=0.5,ctx[_0x178595(0x1c6)]([0x1,0x4]);for(let _0x9b975=0x0;_0x9b975<=canvas['width'];_0x9b975+=GRID_SIZE){ctx[_0x178595(0x18d)](),ctx[_0x178595(0x1bb)](_0x9b975,0x0),ctx['lineTo'](_0x9b975,canvas[_0x178595(0x197)]),ctx['stroke']();}for(let _0x5156dd=0x0;_0x5156dd<=canvas['height'];_0x5156dd+=GRID_SIZE){ctx[_0x178595(0x18d)](),ctx[_0x178595(0x1bb)](0x0,_0x5156dd),ctx[_0x178595(0x1dc)](canvas[_0x178595(0x1e6)],_0x5156dd),ctx['stroke']();}ctx['setLineDash']([]);if(problemList[_0x178595(0x1db)]>currentProblem&&problemList[currentProblem]){const _0x192f8e=problemList[currentProblem];ctx['strokeStyle']=_0x178595(0x160),ctx[_0x178595(0x225)]=0x2;if(_0x192f8e[_0x178595(0x1eb)]===_0x178595(0x21f)){if(_0x192f8e[_0x178595(0x239)])ctx[_0x178595(0x18d)](),ctx[_0x178595(0x1bb)](0x0,0x0),ctx[_0x178595(0x1dc)](canvas[_0x178595(0x1e6)],canvas['height']),ctx['stroke']();else{if(_0x192f8e['axisDirection']===_0x178595(0x257)){const _0x2e3509=canvas['width']/0x2;ctx[_0x178595(0x18d)](),ctx['moveTo'](_0x2e3509,0x0),ctx[_0x178595(0x1dc)](_0x2e3509,canvas[_0x178595(0x197)]),ctx['stroke']();}else{if(_0x192f8e['axisDirection']===_0x178595(0x183)){const _0x295181=canvas[_0x178595(0x197)]/0x2;ctx['beginPath'](),ctx[_0x178595(0x1bb)](0x0,_0x295181),ctx[_0x178595(0x1dc)](canvas['width'],_0x295181),ctx[_0x178595(0x18a)]();}}}}else{if(_0x192f8e['type']==='point'){const _0x59af64=canvas[_0x178595(0x1e6)]/0x2,_0x25f5ea=canvas[_0x178595(0x197)]/0x2;ctx['beginPath'](),ctx[_0x178595(0x233)](_0x59af64,_0x25f5ea,0x5,0x0,Math['PI']*0x2),ctx[_0x178595(0x1fd)]=_0x178595(0x160),ctx[_0x178595(0x208)]();}}}}function drawLines(_0x475f6e,_0x121f5b){const _0x2aab9d=_0x4dc7fe;ctx[_0x2aab9d(0x23f)]=_0x121f5b,ctx[_0x2aab9d(0x225)]=0x3,_0x475f6e[_0x2aab9d(0x179)](_0x33b189=>{const _0xfb5674=_0x2aab9d;ctx[_0xfb5674(0x18d)](),ctx[_0xfb5674(0x1bb)](_0x33b189['p1']['x']*GRID_SIZE,_0x33b189['p1']['y']*GRID_SIZE),ctx[_0xfb5674(0x1dc)](_0x33b189['p2']['x']*GRID_SIZE,_0x33b189['p2']['y']*GRID_SIZE),ctx[_0xfb5674(0x18a)]();});}function redrawCanvas(){const _0x42aef3=_0x4dc7fe;ctx['clearRect'](0x0,0x0,canvas[_0x42aef3(0x1e6)],canvas['height']),drawGrid(),drawLines(problemLines,'#007bff'),drawLines(userLines,_0x42aef3(0x200)),hoveredLine&&(ctx['save'](),ctx[_0x42aef3(0x23f)]=_0x42aef3(0x196),ctx[_0x42aef3(0x225)]=0x8,ctx[_0x42aef3(0x1a1)]=_0x42aef3(0x1fb),ctx[_0x42aef3(0x215)]=0xa,ctx[_0x42aef3(0x18d)](),ctx[_0x42aef3(0x1bb)](hoveredLine['p1']['x']*GRID_SIZE,hoveredLine['p1']['y']*GRID_SIZE),ctx[_0x42aef3(0x1dc)](hoveredLine['p2']['x']*GRID_SIZE,hoveredLine['p2']['y']*GRID_SIZE),ctx['stroke'](),ctx[_0x42aef3(0x188)]()),renderProblemVertices(),canvasMode===_0x42aef3(0x21f)?renderPointsForLineMode():renderUserVertices();}function renderPointsForLineMode(){const _0x1d84d3=_0x4dc7fe;document[_0x1d84d3(0x184)]('.user-dot,\x20.line-dot,\x20.selected-line-dot')[_0x1d84d3(0x179)](_0x1361a6=>_0x1361a6[_0x1d84d3(0x1d1)]());const _0x1b7fdf=[...problemVertices,...userVertices]['filter']((_0x1ce992,_0x1b1d41,_0x2fa40d)=>_0x1b1d41===_0x2fa40d[_0x1d84d3(0x176)](_0x1b3b78=>isSamePoint(_0x1b3b78,_0x1ce992)));_0x1b7fdf[_0x1d84d3(0x179)](_0x16caee=>{const _0xb222df=_0x1d84d3,_0x49fbf5=document[_0xb222df(0x1a8)](_0xb222df(0x1de));_0x49fbf5[_0xb222df(0x15a)]=tempLineStart&&isSamePoint(_0x16caee,tempLineStart)?_0xb222df(0x258):_0xb222df(0x23b),_0x49fbf5[_0xb222df(0x1ab)][_0xb222df(0x173)]=_0x16caee['x']/GRID_COUNT*0x64+'%',_0x49fbf5[_0xb222df(0x1ab)][_0xb222df(0x1b3)]=_0x16caee['y']/GRID_COUNT*0x64+'%',canvasWrapper[_0xb222df(0x247)](_0x49fbf5);});}function renderUserVertices(){const _0xe677d0=_0x4dc7fe;document['querySelectorAll']('.user-dot,\x20.line-dot,\x20.selected-line-dot')['forEach'](_0x92156c=>_0x92156c[_0xe677d0(0x1d1)]()),userVertices[_0xe677d0(0x179)](_0x300458=>{const _0x3cef08=_0xe677d0,_0x43a357=document[_0x3cef08(0x1a8)](_0x3cef08(0x1de));_0x43a357['className']=_0x3cef08(0x240),_0x43a357['style'][_0x3cef08(0x173)]=_0x300458['x']/GRID_COUNT*0x64+'%',_0x43a357['style'][_0x3cef08(0x1b3)]=_0x300458['y']/GRID_COUNT*0x64+'%',canvasWrapper[_0x3cef08(0x247)](_0x43a357);});}function isVertexOnProblemBoundary(_0x105ccf){const _0x353ef5=_0x4dc7fe;return problemVertices[_0x353ef5(0x18b)](_0x4a3f17=>isSamePoint(_0x4a3f17,_0x105ccf));}function showPopup(_0x50fc67,_0x41eb91,_0x100b6a){const _0x3564d7=_0x4dc7fe,_0x285c61=document[_0x3564d7(0x244)](_0x3564d7(0x16f)),_0x25c993=document[_0x3564d7(0x244)](_0x3564d7(0x1b7)),_0x23a872=document[_0x3564d7(0x244)]('popup-detail-message'),_0x2ce645=document[_0x3564d7(0x244)](_0x3564d7(0x220));_0x100b6a?(_0x25c993[_0x3564d7(0x203)]=_0x50fc67,_0x25c993[_0x3564d7(0x15a)]='correct',_0x23a872[_0x3564d7(0x1ab)]['display']=_0x3564d7(0x20e),_0x2ce645[_0x3564d7(0x1ab)][_0x3564d7(0x254)]=_0x3564d7(0x234)):(_0x25c993['innerHTML']=_0x50fc67+_0x3564d7(0x1f1)+_0x41eb91+_0x3564d7(0x1ff),_0x25c993['className']=_0x3564d7(0x17f),_0x23a872[_0x3564d7(0x1ab)][_0x3564d7(0x254)]=_0x3564d7(0x20e),_0x2ce645[_0x3564d7(0x1ab)][_0x3564d7(0x254)]=_0x3564d7(0x20e)),_0x285c61[_0x3564d7(0x1ab)][_0x3564d7(0x254)]=_0x3564d7(0x19f);}function closePopup(){const _0x54ddaf=_0x4dc7fe;document[_0x54ddaf(0x244)]('result-popup-overlay')[_0x54ddaf(0x1ab)][_0x54ddaf(0x254)]=_0x54ddaf(0x20e);}function checkAnswer(){const _0x4250f9=_0x4dc7fe,_0x2ffe1a=problemList[currentProblem];if(!_0x2ffe1a)return![];const _0x4776ec=_0x2ffe1a[_0x4250f9(0x1eb)];let _0x37db72=checkVerticesSymmetry(_0x4776ec),_0x208338=![];if(_0x37db72){if(_0x4776ec===_0x4250f9(0x21f))_0x208338=checkLineSymmetryLines(_0x2ffe1a);else{if(_0x4776ec===_0x4250f9(0x1c8))_0x208338=checkPointSymmetryLines(_0x2ffe1a);}}if(_0x37db72&&_0x208338)return score['results'][_0x4250f9(0x1db)]===currentProblem&&score[_0x4250f9(0x166)]['push'](currentProblemAttempts),showPopup(_0x4250f9(0x1f9),'',!![]),saveGameState(),document[_0x4250f9(0x244)]('check-answer-btn')[_0x4250f9(0x1ab)][_0x4250f9(0x254)]='none',document[_0x4250f9(0x244)](_0x4250f9(0x187))[_0x4250f9(0x1ab)]['display']=_0x4250f9(0x234),!![];else{let _0x1c2a57;if(!_0x37db72)_0x1c2a57=_0x4250f9(0x192);else{if(!_0x208338)_0x1c2a57=_0x4250f9(0x204);else _0x1c2a57=_0x4250f9(0x22f);}return currentProblemAttempts++,saveGameState(),showPopup(_0x4250f9(0x227),_0x1c2a57,![]),document[_0x4250f9(0x244)](_0x4250f9(0x217))[_0x4250f9(0x1ab)][_0x4250f9(0x254)]='block',document['getElementById'](_0x4250f9(0x187))[_0x4250f9(0x1ab)][_0x4250f9(0x254)]=_0x4250f9(0x20e),![];}}function checkVerticesSymmetry(_0x6a0373){const _0x486123=_0x4dc7fe,_0xcf4b65=problemList[currentProblem],_0x2e9bba=_0xcf4b65[_0x486123(0x1eb)]===_0x486123(0x21f)&&_0xcf4b65[_0x486123(0x239)],_0x4f6567=new Map();[...problemVertices,...userVertices]['forEach'](_0x48cef7=>{const _0x37aa20=_0x486123,_0x5a9f36=Math[_0x37aa20(0x24f)](_0x48cef7['x'])+','+Math[_0x37aa20(0x24f)](_0x48cef7['y']);if(!_0x4f6567[_0x37aa20(0x1b9)](_0x5a9f36))_0x4f6567[_0x37aa20(0x22b)](_0x5a9f36,{'x':Math[_0x37aa20(0x24f)](_0x48cef7['x']),'y':Math[_0x37aa20(0x24f)](_0x48cef7['y'])});});const _0x1b2a44=Array['from'](_0x4f6567['values']());if(_0x6a0373===_0x486123(0x21f)){let _0x3d994b;if(_0x2e9bba)_0x3d994b=_0x1b2a44[_0x486123(0x1a2)](_0x3df92d=>_0x3df92d['x']===_0x3df92d['y'])[_0x486123(0x1db)];else{if(_0xcf4b65[_0x486123(0x256)]===_0x486123(0x257))_0x3d994b=_0x1b2a44[_0x486123(0x1a2)](_0xe2a619=>_0xe2a619['x']===HALF_COUNT)[_0x486123(0x1db)];else{if(_0xcf4b65[_0x486123(0x256)]===_0x486123(0x183))_0x3d994b=_0x1b2a44['filter'](_0x216eb6=>_0x216eb6['y']===HALF_COUNT)['length'];}}if((_0x1b2a44[_0x486123(0x1db)]-_0x3d994b)%0x2!==0x0)return![];}let _0x1fe902=new Map();for(const _0x3af832 of _0x1b2a44){const _0x2fc0c8=_0x3af832['x']+','+_0x3af832['y'];if(_0x1fe902[_0x486123(0x1b9)](_0x2fc0c8))continue;const _0x478b55=calculateSymmetricPoint(_0x3af832,_0x6a0373,_0x2e9bba,_0xcf4b65[_0x486123(0x256)]);if(isSamePoint(_0x3af832,_0x478b55)){_0x1fe902[_0x486123(0x22b)](_0x2fc0c8,!![]);continue;}if(!_0x1b2a44[_0x486123(0x18b)](_0x220e93=>isSamePoint(_0x220e93,_0x478b55)))return![];_0x1fe902[_0x486123(0x22b)](_0x2fc0c8,!![]),_0x1fe902[_0x486123(0x22b)](_0x478b55['x']+','+_0x478b55['y'],!![]);}return!![];}function checkLineSymmetryLines(_0x28ab5d){const _0x40c19c=_0x4dc7fe,_0x3448ca=_0x28ab5d[_0x40c19c(0x18e)]['map'](_0x36d68f=>({'p1':calculateSymmetricPoint(_0x36d68f['p1'],'line',_0x28ab5d[_0x40c19c(0x239)],_0x28ab5d[_0x40c19c(0x256)]),'p2':calculateSymmetricPoint(_0x36d68f['p2'],_0x40c19c(0x21f),_0x28ab5d[_0x40c19c(0x239)],_0x28ab5d[_0x40c19c(0x256)])}));if(userLines['length']!==_0x3448ca['length'])return![];for(const _0x2d74d1 of userLines)if(!_0x3448ca[_0x40c19c(0x18b)](_0x545c94=>isSameLine(_0x2d74d1,_0x545c94)))return![];return!![];}function checkPointSymmetryLines(_0x96eeca){const _0x13a74f=_0x4dc7fe,_0x16a70d=[...problemLines,...userLines],_0x5f1130=_0x96eeca[_0x13a74f(0x157)];if(_0x16a70d[_0x13a74f(0x1db)]!==_0x5f1130[_0x13a74f(0x1db)])return![];const _0x16a071=[..._0x5f1130];for(const _0x1d9497 of _0x16a70d){const _0x52d043=_0x16a071['findIndex'](_0x2f7519=>isSameLine(_0x1d9497,_0x2f7519));if(_0x52d043===-0x1)return![];_0x16a071[_0x13a74f(0x245)](_0x52d043,0x1);}return _0x16a071[_0x13a74f(0x1db)]===0x0;}function findClosestValidLinePoint(_0x27f4bc){const _0x2f413f=_0x4dc7fe,_0x117e50=[...problemVertices,...userVertices];if(problemList[_0x2f413f(0x1db)]>currentProblem&&problemList[currentProblem][_0x2f413f(0x1eb)]==='point')_0x117e50[_0x2f413f(0x161)](CENTER_POINT);let _0x4f155b=null,_0x5ee6fe=Infinity;for(const _0x449652 of _0x117e50){const _0x24af52=distSq(_0x27f4bc,_0x449652);_0x24af52<_0x5ee6fe&&(_0x5ee6fe=_0x24af52,_0x4f155b=_0x449652);}return _0x4f155b;}function setCanvasMode(_0x2a9574){const _0x1b5e14=_0x4dc7fe;canvasMode=_0x2a9574;const _0x4ca561=document['getElementById']('mode-vertex'),_0x535a34=document['getElementById']('mode-line');_0x4ca561[_0x1b5e14(0x1b5)][_0x1b5e14(0x1d1)]('mode-btn-active'),_0x535a34['classList']['remove'](_0x1b5e14(0x1ea));const _0x56cc24=userVertices['length']>=0x1||problemVertices[_0x1b5e14(0x1db)]>0x1;_0x2a9574===_0x1b5e14(0x19d)?(_0x4ca561['classList']['add'](_0x1b5e14(0x1ea)),tempLineStart=null):(_0x535a34['classList'][_0x1b5e14(0x15b)](_0x1b5e14(0x1ea)),_0x4ca561['disabled']=![]),document[_0x1b5e14(0x244)](_0x1b5e14(0x1f0))[_0x1b5e14(0x16b)]=!_0x56cc24,redrawCanvas();}function getTargetTimeForProblem(_0x4f18ea){const _0x400147=_0x4dc7fe,_0x74d014=selectedDifficulty==0x2;return _0x4f18ea[_0x400147(0x1eb)]===_0x400147(0x21f)?_0x74d014?0x14:0xa:_0x74d014?0x5a:0x3c;}function showFinalResult(){const _0xd3d5c8=_0x4dc7fe;gameMode===_0xd3d5c8(0x1d2)&&stopTimer();gameMode==='timeAttack'&&selectedDifficulty!==_0xd3d5c8(0x18c)&&(totalProblems=score[_0xd3d5c8(0x166)][_0xd3d5c8(0x1db)]);saveGameState(),showPage(_0xd3d5c8(0x159));let _0x4adc79=0x0,_0x27b602=0x0,_0x49ae9a=0x0;score['results'][_0xd3d5c8(0x179)](_0x33e904=>{_0x33e904===0x0?(_0x4adc79++,_0x49ae9a+=0x1):(_0x27b602++,_0x49ae9a+=Math['max'](0x0,0x1-_0x33e904*0.4));});const _0x3ae8a4=score[_0xd3d5c8(0x166)][_0xd3d5c8(0x1db)],_0x2b9205=_0x3ae8a4>0x0?parseFloat((_0x49ae9a/_0x3ae8a4*0x64)['toFixed'](0x1)):0x0;finalAccuracyValue=_0x2b9205;let _0x359972=0x0;const _0x5b501d=selectedDifficulty===_0xd3d5c8(0x18c);document[_0xd3d5c8(0x244)](_0xd3d5c8(0x1a9))[_0xd3d5c8(0x229)]=_0x5b501d?'연습\x20완료':_0xd3d5c8(0x1cf);const _0x9ea86f=document['querySelector'](_0xd3d5c8(0x25c)),_0x467dae=document[_0xd3d5c8(0x244)](_0xd3d5c8(0x1be));_0x5b501d?(_0x9ea86f[_0xd3d5c8(0x1ab)][_0xd3d5c8(0x254)]='none',_0x467dae[_0xd3d5c8(0x1ab)][_0xd3d5c8(0x254)]=_0xd3d5c8(0x20e)):(_0x9ea86f['style']['display']='block',_0x467dae['style']['display']=_0xd3d5c8(0x234));if(gameMode===_0xd3d5c8(0x1d2)&&!_0x5b501d){const _0x454fb4=_0x3ae8a4;document[_0xd3d5c8(0x244)](_0xd3d5c8(0x19e))[_0xd3d5c8(0x1ab)]['display']='block';if(_0x454fb4===0x0)_0x359972=0x0,document[_0xd3d5c8(0x244)](_0xd3d5c8(0x1c3))[_0xd3d5c8(0x229)]='N/A';else{const _0x3e5db2=timeLimitInMinutes*0x3c-remainingTime,_0x52366f=_0x454fb4>0x0?_0x3e5db2/_0x454fb4:0x0;let _0x2f3eec=0x0;for(let _0x27032e=0x0;_0x27032e<_0x454fb4;_0x27032e++){const _0x133b07=problemList[_0x27032e];_0x133b07[_0xd3d5c8(0x1eb)]===_0xd3d5c8(0x1c8)?selectedDifficulty==0x2?_0x2f3eec+=0x5a:_0x2f3eec+=0x3c:selectedDifficulty==0x2?_0x2f3eec+=0x14:_0x2f3eec+=0xa;}const _0x1aac46=_0x454fb4>0x0?_0x2f3eec/_0x454fb4:0x0,_0x26f109=_0x52366f>0x0?_0x1aac46/_0x52366f:0x0,_0x1f9ac2=selectedDifficulty==0x2?1.5:1.2;_0x359972=Math['round'](_0x26f109*(_0x2b9205/0x64)*0x1388*_0x1f9ac2),document[_0xd3d5c8(0x244)]('avg-time-display')[_0xd3d5c8(0x229)]=_0x52366f[_0xd3d5c8(0x1ec)](0x1);}}else{document[_0xd3d5c8(0x244)](_0xd3d5c8(0x19e))[_0xd3d5c8(0x1ab)][_0xd3d5c8(0x254)]=_0xd3d5c8(0x20e);if(!_0x5b501d){let _0x5273b0=0x1;if(selectedType===_0xd3d5c8(0x1c8))_0x5273b0=1.1;else{if(selectedType===_0xd3d5c8(0x23d))_0x5273b0=1.05;}const _0x1b35c8=selectedDifficulty==0x2?1.5:0x1;_0x359972=Math[_0xd3d5c8(0x24f)](_0x3ae8a4*_0x2b9205*_0x1b35c8*_0x5273b0);}}finalScoreValue=_0x359972,document[_0xd3d5c8(0x244)](_0xd3d5c8(0x15d))[_0xd3d5c8(0x229)]=_0x4adc79,document[_0xd3d5c8(0x244)](_0xd3d5c8(0x20c))['textContent']=_0x27b602,document['getElementById'](_0xd3d5c8(0x214))['textContent']=_0x2b9205+'%',!_0x5b501d&&(document[_0xd3d5c8(0x244)](_0xd3d5c8(0x172))[_0xd3d5c8(0x229)]=_0x359972);}function handleCanvasMouseMove(_0x5d1258){const _0x4feb12=_0x4dc7fe;if(document[_0x4feb12(0x244)](_0x4feb12(0x217))['style'][_0x4feb12(0x254)]===_0x4feb12(0x20e)){hoveredLine&&(hoveredLine=null,canvas[_0x4feb12(0x1ab)][_0x4feb12(0x185)]=_0x4feb12(0x1f7),redrawCanvas());return;}const _0x399fcf=canvas[_0x4feb12(0x1b2)](),_0x51082e=(_0x5d1258[_0x4feb12(0x250)]-_0x399fcf[_0x4feb12(0x173)])/_0x399fcf[_0x4feb12(0x1e6)],_0x353377=(_0x5d1258[_0x4feb12(0x1a5)]-_0x399fcf[_0x4feb12(0x1b3)])/_0x399fcf[_0x4feb12(0x197)],_0x441a92=_0x51082e*canvas[_0x4feb12(0x1e6)],_0x462beb=_0x353377*canvas[_0x4feb12(0x197)],_0x28e879={'x':_0x441a92/GRID_SIZE,'y':_0x462beb/GRID_SIZE};let _0x4a8f9d=null,_0x2fe964=0.25;for(const _0x1991d2 of userLines){const _0x14b47e=_0x1991d2['p1'],_0x3f2298=_0x1991d2['p2'],_0xf996b6=distSq(_0x14b47e,_0x3f2298);if(_0xf996b6===0x0)continue;let _0x3b73d1=((_0x28e879['x']-_0x14b47e['x'])*(_0x3f2298['x']-_0x14b47e['x'])+(_0x28e879['y']-_0x14b47e['y'])*(_0x3f2298['y']-_0x14b47e['y']))/_0xf996b6;if(_0x3b73d1>0.2&&_0x3b73d1<0.8){const _0x45f304={'x':_0x14b47e['x']+_0x3b73d1*(_0x3f2298['x']-_0x14b47e['x']),'y':_0x14b47e['y']+_0x3b73d1*(_0x3f2298['y']-_0x14b47e['y'])},_0x2415c3=distSq(_0x28e879,_0x45f304);_0x2415c3<_0x2fe964&&(_0x2fe964=_0x2415c3,_0x4a8f9d=_0x1991d2);}}!isSameLine(hoveredLine,_0x4a8f9d)&&(hoveredLine=_0x4a8f9d,redrawCanvas());if(hoveredLine)canvas[_0x4feb12(0x1ab)][_0x4feb12(0x185)]='pointer';else{if(canvasMode===_0x4feb12(0x21f))canvas['style'][_0x4feb12(0x185)]=_0x4feb12(0x246);else canvas[_0x4feb12(0x1ab)][_0x4feb12(0x185)]=_0x4feb12(0x193);}}function showQrPopup(){const _0x2bf975=_0x4dc7fe;document[_0x2bf975(0x244)](_0x2bf975(0x211))[_0x2bf975(0x1ab)][_0x2bf975(0x254)]=_0x2bf975(0x19f);}function closeQrPopup(){const _0x5b525c=_0x4dc7fe;document[_0x5b525c(0x244)](_0x5b525c(0x211))[_0x5b525c(0x1ab)][_0x5b525c(0x254)]=_0x5b525c(0x20e);}function showHofPopup(){const _0x4dc19b=_0x4dc7fe,_0x48f287=document[_0x4dc19b(0x244)]('hof-message'),_0x27a1fa=document['querySelector']('.hof-input-group'),_0x2f155b=document[_0x4dc19b(0x209)]('#hof-table-classic\x20tbody'),_0x7381f=document[_0x4dc19b(0x209)](_0x4dc19b(0x17b));document[_0x4dc19b(0x244)](_0x4dc19b(0x16a))[_0x4dc19b(0x1ab)][_0x4dc19b(0x254)]=_0x4dc19b(0x234),hasSubmittedScore?(_0x27a1fa[_0x4dc19b(0x1ab)][_0x4dc19b(0x254)]=_0x4dc19b(0x20e),_0x48f287[_0x4dc19b(0x229)]=_0x4dc19b(0x251),_0x48f287[_0x4dc19b(0x1ab)][_0x4dc19b(0x1a4)]=_0x4dc19b(0x21b)):(_0x27a1fa[_0x4dc19b(0x1ab)]['display']=_0x4dc19b(0x234),_0x48f287[_0x4dc19b(0x229)]='',document[_0x4dc19b(0x244)](_0x4dc19b(0x20d))[_0x4dc19b(0x23a)]='',document[_0x4dc19b(0x244)]('hof-submit-btn')[_0x4dc19b(0x16b)]=![]),_0x2f155b[_0x4dc19b(0x203)]=_0x4dc19b(0x20a),_0x7381f[_0x4dc19b(0x203)]=_0x4dc19b(0x20a),document[_0x4dc19b(0x244)](_0x4dc19b(0x238))[_0x4dc19b(0x1ab)][_0x4dc19b(0x254)]=_0x4dc19b(0x19f),fetch(webAppUrl)[_0x4dc19b(0x175)](_0x44ebc9=>_0x44ebc9[_0x4dc19b(0x1f3)]())[_0x4dc19b(0x175)](_0x99803d=>{const _0xe0b7f3=_0x4dc19b,_0x16a292=_0x99803d[_0xe0b7f3(0x21c)],_0x29d561=_0x99803d[_0xe0b7f3(0x1d0)];populateHofTable(_0x2f155b,_0x99803d['classic']||[],_0xe0b7f3(0x1a3),_0x16a292),populateHofTable(_0x7381f,_0x99803d[_0xe0b7f3(0x1d2)]||[],_0xe0b7f3(0x207),_0x29d561);})[_0x4dc19b(0x223)](_0x47925e=>{const _0x3c9e93=_0x4dc19b;_0x2f155b['innerHTML']=_0x3c9e93(0x23c),_0x7381f[_0x3c9e93(0x203)]=_0x3c9e93(0x23c),console[_0x3c9e93(0x199)](_0x3c9e93(0x1e9),_0x47925e);});}function populateHofTable(_0x2d9be8,_0x3604f8,_0x28ff5d,_0x790b71){const _0x2a616=_0x4dc7fe;_0x2d9be8['innerHTML']='';if(_0x790b71){const _0x3d47de=_0x2a616(0x1d5)+_0x790b71[_0x2a616(0x1e4)]+_0x2a616(0x182)+_0x790b71[_0x2a616(0x213)]+_0x2a616(0x17d);_0x2d9be8['innerHTML']+=_0x3d47de;}if(!_0x3604f8||_0x3604f8[_0x2a616(0x1db)]===0x0){_0x2d9be8[_0x2a616(0x203)]+='<tr><td\x20colspan=\x223\x22>아직\x20등록된\x20'+_0x28ff5d+_0x2a616(0x212);return;}const _0x1edd8c=_0x3604f8[_0x2a616(0x1a2)](_0x4a304c=>!(_0x790b71&&_0x4a304c[_0x2a616(0x213)]===_0x790b71[_0x2a616(0x213)]&&_0x4a304c[_0x2a616(0x1e4)]===_0x790b71[_0x2a616(0x1e4)]));let _0x426aa3=0x1,_0x16d23f=0x0,_0x520af8=null;_0x1edd8c[_0x2a616(0x179)]((_0x4e5309,_0x22b0a0)=>{const _0x3441e4=_0x2a616;if(_0x520af8!==null&&_0x4e5309[_0x3441e4(0x213)]<_0x520af8)_0x426aa3+=_0x16d23f+0x1,_0x16d23f=0x0;else _0x520af8!==null&&_0x4e5309[_0x3441e4(0x213)]===_0x520af8&&_0x16d23f++;_0x520af8=_0x4e5309[_0x3441e4(0x213)];if(_0x426aa3>0x14)return;let _0x3e7ab6='';if(_0x426aa3===0x1)_0x3e7ab6=_0x3441e4(0x17a);if(_0x426aa3===0x2)_0x3e7ab6='style=\x22color:\x20#c0c0c0;\x20font-weight:\x20bold;\x20text-shadow:\x200\x200\x203px\x20#fff;\x22';if(_0x426aa3===0x3)_0x3e7ab6='style=\x22color:\x20#cd7f32;\x20font-weight:\x20bold;\x20text-shadow:\x200\x200\x203px\x20#fff;\x22';const _0x2cd371=_0x3441e4(0x17c)+_0x426aa3+'</td><td\x20'+_0x3e7ab6+'>'+_0x4e5309[_0x3441e4(0x1e4)]+'\x20'+(_0x426aa3===0x1?'🥇':_0x426aa3===0x2?'🥈':_0x426aa3===0x3?'🥉':'')+'</td><td>'+_0x4e5309[_0x3441e4(0x213)]+_0x3441e4(0x1cb);_0x2d9be8[_0x3441e4(0x203)]+=_0x2cd371;});}function closeHofPopup(){const _0x49a81b=_0x4dc7fe;document[_0x49a81b(0x244)](_0x49a81b(0x238))[_0x49a81b(0x1ab)]['display']='none';}function saveGameState(){const _0x3d78b6=_0x4dc7fe;if(document['getElementById'](_0x3d78b6(0x1d6))[_0x3d78b6(0x1ab)]['display']===_0x3d78b6(0x234)&&problemList[_0x3d78b6(0x1db)]===0x0)return;const _0x1cd460={'problemList':problemList,'currentProblem':currentProblem,'score':score,'userVertices':userVertices,'userLines':userLines,'canvasMode':canvasMode,'selectedType':selectedType,'selectedDifficulty':selectedDifficulty,'totalProblems':totalProblems,'currentProblemAttempts':currentProblemAttempts,'finalScoreValue':finalScoreValue,'hasSubmittedScore':hasSubmittedScore,'gameMode':gameMode,'timeLimitInMinutes':timeLimitInMinutes,'remainingTime':remainingTime};localStorage[_0x3d78b6(0x1c9)](_0x3d78b6(0x15f),JSON[_0x3d78b6(0x1f2)](_0x1cd460));}function loadGameState(){const _0x45b734=_0x4dc7fe,_0x3f66da=localStorage[_0x45b734(0x181)](_0x45b734(0x15f));if(!_0x3f66da)return'none';const _0x14dbb0=JSON[_0x45b734(0x165)](_0x3f66da);if(!_0x14dbb0||!_0x14dbb0['problemList']||!_0x14dbb0['score']||!_0x14dbb0[_0x45b734(0x226)])return _0x45b734(0x20e);const _0x3aec22=_0x14dbb0[_0x45b734(0x226)]===_0x45b734(0x15e)&&_0x14dbb0[_0x45b734(0x24d)]>0x0&&_0x14dbb0[_0x45b734(0x1dd)]<_0x14dbb0[_0x45b734(0x24d)],_0x27d707=_0x14dbb0['gameMode']==='timeAttack'&&_0x14dbb0[_0x45b734(0x25a)]>0x0;if(_0x3aec22||_0x27d707)return problemList=_0x14dbb0[_0x45b734(0x189)],currentProblem=_0x14dbb0[_0x45b734(0x1dd)],score=_0x14dbb0['score'],canvasMode=_0x14dbb0[_0x45b734(0x1e1)],selectedType=_0x14dbb0[_0x45b734(0x216)],selectedDifficulty=_0x14dbb0[_0x45b734(0x206)],totalProblems=_0x14dbb0[_0x45b734(0x24d)],currentProblemAttempts=_0x14dbb0[_0x45b734(0x255)],finalScoreValue=_0x14dbb0['finalScoreValue'],hasSubmittedScore=_0x14dbb0['hasSubmittedScore'],gameMode=_0x14dbb0[_0x45b734(0x226)],timeLimitInMinutes=_0x14dbb0[_0x45b734(0x228)],remainingTime=_0x14dbb0['remainingTime'],userVertices=_0x14dbb0[_0x45b734(0x1ae)]||[],userLines=_0x14dbb0[_0x45b734(0x232)]||[],gameMode===_0x45b734(0x1d2)&&remainingTime>0x0&&startTimer(!![]),_0x45b734(0x1a6);const _0x555e52=_0x14dbb0[_0x45b734(0x213)][_0x45b734(0x166)][_0x45b734(0x1db)]>0x0||_0x14dbb0['gameMode']===_0x45b734(0x1d2)&&_0x14dbb0[_0x45b734(0x25a)]<=0x0;if(_0x555e52)return Object['assign'](window,_0x14dbb0),_0x45b734(0x1bc);return'none';}function clearGameState(){const _0x4be1ab=_0x4dc7fe;localStorage[_0x4be1ab(0x180)]('quizState');}function _0xb6fd(){const _0x3a3be1=['.score-display','allLines','timer-display','final-result-page','className','add','.problem-dot','correct-count','classic','quizState','#ff0000','push','시간은\x202분으로<br>고정됩니다.','1119580hAsaVW','문제\x20개수는<br>3개로\x20고정됩니다.','parse','results','번째\x20문제\x20(','time-attack-settings','reduce','hof-reset-message','disabled','time-minus','798QaQwMt','innerWidth','result-popup-overlay','slanted','restart-btn','final-score','left','application/json','then','findIndex','42411zHVmtm','#difficulty-select\x20button[data-difficulty=\x221\x22]','forEach','style=\x22color:\x20#d4af37;\x20font-weight:\x20bold;\x20text-shadow:\x200\x200\x204px\x20#fff,\x200\x200\x206px\x20#ff0;\x22','#hof-table-timeattack\x20tbody','<tr><td>','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>','time-warning','incorrect','removeItem','getItem','\x20🏆</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>','horizontal','querySelectorAll','cursor','입니다.<br>나머지\x20부분을\x20완성해\x20주세요.','next-problem-btn','restore','problemList','stroke','some','practice','beginPath','initialLines','705447RvPCPX','진행\x20상황이\x20사라집니다.\x20정말로\x20첫\x20페이지로\x20돌아갈까요?','settings-overlay','꼭짓점의\x20위치나\x20개수가\x20잘못되었어요.','crosshair','data-difficulty','toString','rgba(234,\x20153,\x20153,\x200.5)','height','touchstart','error','점대칭','mode-selection-page','start-quiz-btn','vertex','time-attack-avg-time','flex','mouseleave','shadowColor','filter','클래식','color','clientY','in-progress','2110ugsCVv','createElement','final-result-title','transform','style','ceil','submitScore','userVertices','transition','qr-code-btn','classic-settings','getBoundingClientRect','top','problem-dot','classList','POST','popup-main-message','transform\x200.2s\x20ease-out','has','52fkHKhs','moveTo','finished','Error\x20submitting\x20score:','show-hof-btn','284192obmNin','quantity-minus','random','924341dhbjjC','avg-time-display','grid-canvas','선대칭','setLineDash','복구\x20중\x20추가\x20오류\x20발생:','point','setItem','initialVertices','</td></tr>','classic-mode-btn','이니셜은\x20영어\x20대문자\x203글자로\x20입력해주세요.','problem-instruction','학습\x20완료','timeAttackTopScorer','remove','timeAttack','back-to-mode-select-btn','reload','<tr\x20style=\x22font-weight:\x20bold;\x20color:\x20#4b8134;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>⭐</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>','problem-page','#type-select\x20button[data-type=\x22line\x22]','time-plus','indexOf','map','length','lineTo','currentProblem','div','sqrt','translateX(-100%)','canvasMode','26TzaAyo','#problem-page\x20.home-button','initial','치명적인\x20오류가\x20발생하여\x20페이지를\x20새로고침합니다.','width','등록에\x20실패했습니다.\x20다시\x20시도해주세요.','transform\x20','Error\x20fetching\x20leaderboard:','mode-btn-active','type','toFixed','visibilitychange','reverse','setup-page','mode-line','<br><span\x20style=\x22font-size:\x2080%;\x22>','stringify','json','click','#difficulty-select\x20button','hof-message','default','floor','정답입니다🎉','.canvas-wrapper','rgba(234,\x20153,\x20153,\x200.7)','오류가\x20발생하여\x20앱을\x20초기화합니다:','fillStyle','clear-canvas-btn','</span>','#28a745','confirm-clear-popup-overlay','data-type','innerHTML','도형이\x20대칭을\x20이루지\x20않거나\x20빠뜨린\x20선분이\x20있어요.','#333','selectedDifficulty','타임어택','fill','querySelector','<tr><td\x20colspan=\x223\x22>불러오는\x20중...</td></tr>','problem-quantity','retried-count','hof-initial','none','남은\x20문제\x20','mousedown','qr-popup-overlay','\x20기록이\x20없습니다.</td></tr>','score','final-accuracy','shadowBlur','selectedType','check-answer-btn','onload','quantity-plus','touchend','blue','classicTopScorer','abs','padStart','line','popup-next-btn','currentTarget','selected','catch','confirm-clear-no-btn','lineWidth','gameMode','다시\x20생각해\x20볼까요?','timeLimitInMinutes','textContent','toggle','set','includes','20RNbmVR','getAttribute','꼭짓점이나\x20선분\x20연결에\x20오류가\x20있어\x20대칭도형이\x20완성되지\x20않았습니다.','addEventListener','red','userLines','arc','block','성공적으로\x20등록되었습니다!','time-attack-mode-btn','pagehide','hof-popup-overlay','isSlantedAxis','value','line-dot','<tr><td\x20colspan=\x223\x22>기록을\x20불러오는\x20데\x20실패했습니다.</td></tr>','both','13722mYYcyF','strokeStyle','user-dot','#4B8134','hof-submit-btn','problem-counter-display','getElementById','splice','pointer','appendChild','sort','cos','mouseup','점대칭도형','번째\x20문제<br>(','totalProblems','find','round','clientX','이번\x20학습\x20기록은\x20이미\x20등록되었습니다.','concat','#type-select\x20button','display','currentProblemAttempts','axisDirection','vertical','selected-line-dot','타인에게\x20불쾌감을\x20주는\x20단어는\x20사용할\x20수\x20없습니다.','remainingTime','atan2'];_0xb6fd=function(){return _0x3a3be1;};return _0xb6fd();}function submitScore(){const _0xe6dbb2=_0x4dc7fe,_0x64163e=document[_0xe6dbb2(0x244)](_0xe6dbb2(0x20d)),_0x48be1a=_0x64163e['value'],_0x475595=document[_0xe6dbb2(0x244)](_0xe6dbb2(0x242)),_0x208c24=document['getElementById'](_0xe6dbb2(0x1f6));if(!/^[A-Z]{3}$/['test'](_0x48be1a)){_0x208c24[_0xe6dbb2(0x229)]=_0xe6dbb2(0x1cd),_0x208c24[_0xe6dbb2(0x1ab)][_0xe6dbb2(0x1a4)]='red';return;}if(blockedWords[_0xe6dbb2(0x22c)](_0x48be1a)){_0x208c24[_0xe6dbb2(0x229)]=_0xe6dbb2(0x259),_0x208c24[_0xe6dbb2(0x1ab)]['color']='red';return;}_0x475595[_0xe6dbb2(0x16b)]=!![],_0x208c24[_0xe6dbb2(0x229)]='등록\x20중...',_0x208c24[_0xe6dbb2(0x1ab)]['color']=_0xe6dbb2(0x205);const _0x5d45b1={'action':_0xe6dbb2(0x1ad),'initial':_0x48be1a,'score':finalScoreValue,'problems':problemList[_0xe6dbb2(0x1db)],'accuracy':finalAccuracyValue,'difficulty':selectedDifficulty,'type':selectedType,'mode':gameMode};fetch(webAppUrl,{'method':_0xe6dbb2(0x1b6),'cache':'no-cache','headers':{'Content-Type':_0xe6dbb2(0x174)},'body':JSON[_0xe6dbb2(0x1f2)](_0x5d45b1)})[_0xe6dbb2(0x175)](_0x2a04bd=>_0x2a04bd['json']())[_0xe6dbb2(0x175)](_0xb4bedc=>{const _0x51f3bb=_0xe6dbb2;if(_0xb4bedc['result']==='success')hasSubmittedScore=!![],saveGameState(),_0x208c24[_0x51f3bb(0x229)]=_0x51f3bb(0x235),_0x208c24['style'][_0x51f3bb(0x1a4)]=_0x51f3bb(0x241),document['querySelector']('.hof-input-group')[_0x51f3bb(0x1ab)][_0x51f3bb(0x254)]='none',setTimeout(showHofPopup,0x5dc);else throw new Error(_0xb4bedc['message']||'알\x20수\x20없는\x20오류');})[_0xe6dbb2(0x223)](_0x30be0e=>{const _0x46e753=_0xe6dbb2;_0x208c24[_0x46e753(0x229)]=_0x46e753(0x1e7),_0x208c24[_0x46e753(0x1ab)]['color']=_0x46e753(0x231),_0x475595[_0x46e753(0x16b)]=![],console[_0x46e753(0x199)](_0x46e753(0x1bd),_0x30be0e);});}function startTimer(_0x488519=![]){const _0x32dd18=_0x4dc7fe;stopTimer();if(!_0x488519)remainingTime=timeLimitInMinutes*0x3c;const _0x43652e=document[_0x32dd18(0x244)](_0x32dd18(0x158));_0x43652e[_0x32dd18(0x1ab)][_0x32dd18(0x254)]=_0x32dd18(0x234),updateTimerDisplay(),timerInterval=setInterval(()=>{remainingTime--,updateTimerDisplay(),remainingTime<=0x0&&(stopTimer(),showFinalResult());},0x3e8);}function stopTimer(){clearInterval(timerInterval),timerInterval=null;}function updateTimerDisplay(){const _0x1313bf=_0x4dc7fe,_0x2a5f16=document['getElementById'](_0x1313bf(0x158));if(remainingTime<0x0)remainingTime=0x0;const _0x376d3b=Math[_0x1313bf(0x1f8)](remainingTime/0x3c),_0x1cd4a9=remainingTime%0x3c;_0x2a5f16[_0x1313bf(0x229)]=_0x376d3b+':'+_0x1cd4a9[_0x1313bf(0x195)]()[_0x1313bf(0x21e)](0x2,'0'),_0x2a5f16['classList'][_0x1313bf(0x22a)](_0x1313bf(0x17e),remainingTime<=0x3c&&remainingTime>0x0);}window[_0x4dc7fe(0x218)]=()=>{const _0x4b1462=_0x4dc7fe;try{setupGrid();const _0x19d809=loadGameState();if(_0x19d809===_0x4b1462(0x1bc))showFinalResult();else _0x19d809===_0x4b1462(0x1a6)?(showPage('problem-page'),loadProblem()):(resetGame(),showPage('mode-selection-page'));initializeSetupListeners(),document[_0x4b1462(0x244)](_0x4b1462(0x1cc))['addEventListener'](_0x4b1462(0x1f4),()=>selectGameMode('classic')),document[_0x4b1462(0x244)](_0x4b1462(0x236))[_0x4b1462(0x230)](_0x4b1462(0x1f4),()=>selectGameMode(_0x4b1462(0x1d2))),document[_0x4b1462(0x244)](_0x4b1462(0x1d3))[_0x4b1462(0x230)]('click',()=>{confirm('진행\x20상황이\x20사라집니다.\x20정말로\x20첫\x20페이지로\x20돌아갈까요?')&&(resetGame(),showPage('mode-selection-page'));}),canvas[_0x4b1462(0x230)]('mousemove',handleCanvasMouseMove),canvas['addEventListener']('mouseleave',()=>{hoveredLine&&(hoveredLine=null,redrawCanvas());}),canvas[_0x4b1462(0x230)](_0x4b1462(0x1f4),_0x3a899b=>{const _0x30419e=_0x4b1462;if(document[_0x30419e(0x244)]('check-answer-btn')['style'][_0x30419e(0x254)]===_0x30419e(0x20e))return;if(hoveredLine){userLines=userLines[_0x30419e(0x1a2)](_0x2175e2=>!isSameLine(_0x2175e2,hoveredLine)),hoveredLine=null,handleCanvasMouseMove(_0x3a899b),redrawCanvas(),saveGameState();return;}const _0x295e18=canvas[_0x30419e(0x1b2)](),_0x3590b2=(_0x3a899b[_0x30419e(0x250)]-_0x295e18[_0x30419e(0x173)])/_0x295e18[_0x30419e(0x1e6)],_0x66e7d2=(_0x3a899b[_0x30419e(0x1a5)]-_0x295e18[_0x30419e(0x1b3)])/_0x295e18['height'],_0x40475b=Math[_0x30419e(0x24f)](_0x3590b2*canvas['width']/GRID_SIZE),_0x456108=Math[_0x30419e(0x24f)](_0x66e7d2*canvas[_0x30419e(0x197)]/GRID_SIZE);if(_0x40475b<0x0||_0x40475b>GRID_COUNT||_0x456108<0x0||_0x456108>GRID_COUNT)return;const _0x2d9dcf={'x':_0x40475b,'y':_0x456108};if(canvasMode===_0x30419e(0x19d)){if(isVertexOnProblemBoundary(_0x2d9dcf))return;const _0x130943=userVertices[_0x30419e(0x176)](_0x988717=>isSamePoint(_0x988717,_0x2d9dcf));_0x130943>-0x1?(userVertices['splice'](_0x130943,0x1),userLines=userLines['filter'](_0x53eb20=>!(isSamePoint(_0x53eb20['p1'],_0x2d9dcf)||isSamePoint(_0x53eb20['p2'],_0x2d9dcf)))):userVertices['push'](_0x2d9dcf),redrawCanvas(),saveGameState();}else{if(canvasMode===_0x30419e(0x21f)){const _0x30b8d4=findClosestValidLinePoint(_0x2d9dcf);if(!_0x30b8d4)return;if(!tempLineStart)tempLineStart=_0x30b8d4;else{if(!isSamePoint(tempLineStart,_0x30b8d4)){const _0x5f2f82={'p1':tempLineStart,'p2':_0x30b8d4};if(!isLineExists(_0x5f2f82))userLines['push'](_0x5f2f82);else userLines=userLines[_0x30419e(0x1a2)](_0xda7b2f=>!isSameLine(_0xda7b2f,_0x5f2f82));}tempLineStart=null;}redrawCanvas(),saveGameState();}}}),document[_0x4b1462(0x244)](_0x4b1462(0x19c))[_0x4b1462(0x230)]('click',startQuiz),document[_0x4b1462(0x244)](_0x4b1462(0x187))[_0x4b1462(0x230)](_0x4b1462(0x1f4),nextProblem),document[_0x4b1462(0x244)](_0x4b1462(0x1fe))[_0x4b1462(0x230)](_0x4b1462(0x1f4),()=>{const _0x5e1b27=_0x4b1462;document[_0x5e1b27(0x244)](_0x5e1b27(0x201))[_0x5e1b27(0x1ab)][_0x5e1b27(0x254)]=_0x5e1b27(0x19f);}),document['querySelector'](_0x4b1462(0x1e3))[_0x4b1462(0x230)]('click',()=>{const _0xcf4568=_0x4b1462;confirm(_0xcf4568(0x190))&&(resetGame(),showPage(_0xcf4568(0x19b)));}),document[_0x4b1462(0x244)](_0x4b1462(0x1b0))['addEventListener'](_0x4b1462(0x1f4),showQrPopup),document['getElementById']('show-hof-btn')[_0x4b1462(0x230)]('click',showHofPopup),document[_0x4b1462(0x244)](_0x4b1462(0x242))['addEventListener'](_0x4b1462(0x1f4),submitScore),document['getElementById']('confirm-clear-yes-btn')[_0x4b1462(0x230)](_0x4b1462(0x1f4),()=>{const _0x4be33e=_0x4b1462;clearCanvas(!![]),saveGameState(),document[_0x4be33e(0x244)](_0x4be33e(0x201))[_0x4be33e(0x1ab)][_0x4be33e(0x254)]=_0x4be33e(0x20e);}),document[_0x4b1462(0x244)](_0x4b1462(0x224))[_0x4b1462(0x230)](_0x4b1462(0x1f4),()=>{const _0x32b7f0=_0x4b1462;document['getElementById'](_0x32b7f0(0x201))[_0x32b7f0(0x1ab)][_0x32b7f0(0x254)]=_0x32b7f0(0x20e);}),document[_0x4b1462(0x244)](_0x4b1462(0x171))[_0x4b1462(0x230)](_0x4b1462(0x1f4),()=>{const _0x587bf8=_0x4b1462;resetGame(),showPage(_0x587bf8(0x19b));});const _0x2c39e5=()=>{const _0x3c746d=_0x4b1462;if(isExitingIntentionally)return;if(document[_0x3c746d(0x244)](_0x3c746d(0x1d6))['style'][_0x3c746d(0x254)]==='block')saveGameState();};window['addEventListener'](_0x4b1462(0x237),_0x2c39e5),window[_0x4b1462(0x230)](_0x4b1462(0x1ed),()=>{if(document['visibilityState']==='hidden')_0x2c39e5();});const _0x18fd88=document['getElementById'](_0x4b1462(0x217)),_0x49ff37=_0x18fd88[_0x4b1462(0x209)]('.progress-bar');let _0x470be9=null,_0xeef756=![];const _0x1341f0=0x190,_0x34b8ec=_0x4950c6=>{const _0x1eee23=_0x4b1462;if(_0x4950c6['type']===_0x1eee23(0x210)&&_0x4950c6['button']!==0x0)return;_0x4950c6['preventDefault']();if(_0xeef756)return;_0xeef756=!![],_0x49ff37['style'][_0x1eee23(0x1af)]=_0x1eee23(0x1e8)+_0x1341f0/0x3e8+'s\x20linear',_0x49ff37[_0x1eee23(0x1ab)][_0x1eee23(0x1aa)]='translateX(0%)',_0x470be9=setTimeout(()=>{if(!_0xeef756)return;const _0xdf33b6=checkAnswer();!_0xdf33b6&&_0x2c76db();},_0x1341f0);},_0x2c76db=()=>{const _0x3cef87=_0x4b1462;if(!_0xeef756)return;_0xeef756=![],clearTimeout(_0x470be9),_0x470be9=null,_0x49ff37[_0x3cef87(0x1ab)][_0x3cef87(0x1af)]=_0x3cef87(0x1b8),_0x49ff37[_0x3cef87(0x1ab)][_0x3cef87(0x1aa)]=_0x3cef87(0x1e0);};_0x18fd88[_0x4b1462(0x230)](_0x4b1462(0x210),_0x34b8ec),_0x18fd88[_0x4b1462(0x230)](_0x4b1462(0x198),_0x34b8ec,{'passive':![]}),_0x18fd88[_0x4b1462(0x230)](_0x4b1462(0x24a),_0x2c76db),_0x18fd88[_0x4b1462(0x230)](_0x4b1462(0x1a0),_0x2c76db),_0x18fd88[_0x4b1462(0x230)](_0x4b1462(0x21a),_0x2c76db);}catch(_0x1707d6){console[_0x4b1462(0x199)](_0x4b1462(0x1fc),_0x1707d6),clearGameState();try{resetGame(),showPage(_0x4b1462(0x19b)),initializeSetupListeners(),document[_0x4b1462(0x244)](_0x4b1462(0x1cc))['addEventListener']('click',()=>selectGameMode(_0x4b1462(0x15e))),document[_0x4b1462(0x244)]('time-attack-mode-btn')[_0x4b1462(0x230)](_0x4b1462(0x1f4),()=>selectGameMode('timeAttack'));}catch(_0xb8bfee){console[_0x4b1462(0x199)](_0x4b1462(0x1c7),_0xb8bfee),alert(_0x4b1462(0x1e5)),location[_0x4b1462(0x1d4)]();}}};</script>
+
+    const timeOptions = [3, 5, 7];
+    let selectedType = 'line', totalProblems = 5, currentProblem = 0, canvasMode = 'vertex', score = { results: [] }, currentProblemAttempts = 0, selectedDifficulty = '1', finalAccuracyValue = 0, finalScoreValue = 0, hasSubmittedScore = false, isExitingIntentionally = false, gameMode = 'classic', timeLimitInMinutes = 3, remainingTime = 0, timerInterval = null;
+    const canvas = document.getElementById('grid-canvas'), ctx = canvas.getContext('2d'), canvasWrapper = document.querySelector('.canvas-wrapper');
+    let GRID_SIZE, GRID_COUNT, HALF_COUNT, CENTER_POINT, MIN_COORD, MAX_COORD;
+    const COLLINEARITY_THRESHOLD = 1.0, MIN_ANGLE_COSINE = Math.cos(30 * Math.PI / 180), MAX_ANGLE_COSINE = Math.cos(150 * Math.PI / 180), MIN_SLOPE_DIFF = 2.0, MIN_DIST = 2;
+    let problemVertices = [], problemLines = [], userVertices = [], userLines = [], tempLineStart = null, hoveredLine = null, problemList = [];
+
+    function setupGrid() {
+        GRID_COUNT = 16;
+        MIN_COORD = 2;
+        MAX_COORD = 14;
+        GRID_SIZE = canvas.width / GRID_COUNT;
+        HALF_COUNT = GRID_COUNT / 2;
+        CENTER_POINT = { x: HALF_COUNT, y: HALF_COUNT };
+    }
+
+    const allPages = ['mode-selection-page', 'setup-page', 'problem-page', 'final-result-page'];
+    function showPage(pageIdToShow) {
+        allPages.forEach(pageId => {
+            const page = document.getElementById(pageId);
+            if (page) {
+                const displayStyle = (pageId === 'mode-selection-page' || pageId === 'setup-page') ? 'flex' : 'block';
+                page.style.display = (pageId === pageIdToShow) ? displayStyle : 'none';
+            }
+        });
+        const qrBtn = document.getElementById('qr-code-btn');
+        if (qrBtn) {
+            qrBtn.style.display = (pageIdToShow === 'mode-selection-page' || pageIdToShow === 'setup-page') ? 'block' : 'none';
+        }
+    }
+    
+    function resetGame() {
+        stopTimer();
+        clearGameState();
+        isExitingIntentionally = false;
+        
+        selectedType = 'line'; 
+        totalProblems = 5; 
+        currentProblem = 0; 
+        canvasMode = 'vertex'; 
+        score = { results: [] }; 
+        currentProblemAttempts = 0; 
+        selectedDifficulty = '1'; 
+        hasSubmittedScore = false; 
+        gameMode = 'classic'; 
+        timeLimitInMinutes = 3; 
+        remainingTime = 0; 
+        problemList = []; 
+        userVertices = []; 
+        userLines = [];
+        
+        document.getElementById('problem-quantity').textContent = '5';
+        document.getElementById('time-limit-display').textContent = '3분';
+        document.getElementById('timer-display').style.display = 'none';
+        document.getElementById('problem-counter-display').style.display = 'none';
+
+        document.querySelectorAll('#type-select button').forEach(b => b.classList.remove('selected'));
+        document.querySelector('#type-select button[data-type="line"]').classList.add('selected');
+
+        document.querySelectorAll('#difficulty-select button').forEach(b => b.classList.remove('selected'));
+        document.querySelector('#difficulty-select button[data-difficulty="1"]').classList.add('selected');
+        
+        setupGrid();
+        
+        document.getElementById('classic-settings').style.display = 'block';
+        document.getElementById('time-attack-settings').style.display = 'none';
+        updateSettingsOverlay();
+    }
+
+    function isSamePoint(p1, p2) { if (!p1 || !p2) return false; return p1.x === p2.x && p1.y === p2.y; }
+    function isSameLine(l1, l2) { if (!l1 || !l2) return false; const p11 = l1.p1, p12 = l1.p2, p21 = l2.p1, p22 = l2.p2; return (isSamePoint(p11, p21) && isSamePoint(p12, p22)) || (isSamePoint(p11, p22) && isSamePoint(p12, p21)); }
+    function isLineExists(newLine) { return userLines.some(existingLine => isSameLine(existingLine, newLine)); }
+
+    function getRandomInt(min, max) { min = Math.ceil(min); max = Math.floor(max); return Math.floor(Math.random() * (max - min + 1)) + min; }
+    function isTooClose(newV, vertices, minDist = MIN_DIST) { const minDistSq = minDist ** 2; for (const v of vertices) { const distSq = (newV.x - v.x) ** 2 + (newV.y - v.y) ** 2; if (distSq < minDistSq) return true; } return false; }
+    function isTooLinear(p1, p2, p3) { const crossProduct = (p2.y - p1.y) * (p3.x - p2.x) - (p3.y - p2.y) * (p2.x - p1.x); return Math.abs(crossProduct) < COLLINEARITY_THRESHOLD; }
+    function isTooSharpAngle(p1, p2, p3) { const v1x = p1.x - p2.x, v1y = p1.y - p2.y, v2x = p3.x - p2.x, v2y = p3.y - p2.y, dotProduct = v1x * v2x + v1y * v2y, mag1 = Math.sqrt(v1x * v1x + v1y * v1y), mag2 = Math.sqrt(v2x * v2x + v2y * v2y); if (mag1 === 0 || mag2 === 0) return true; const cosine = dotProduct / (mag1 * mag2); return cosine > MIN_ANGLE_COSINE || cosine < MAX_ANGLE_COSINE; }
+    function isTooWeakSlope(p1, p2) { const dx = Math.abs(p2.x - p1.x), dy = Math.abs(p2.y - p1.y); return (dx <= MIN_SLOPE_DIFF || dy <= MIN_SLOPE_DIFF) || (dx > 0 && dy > 0 && Math.abs(dy / dx) < 1); }
+    function isProblemTooLinear(vertices, newV) { if (vertices.length < 2) return false; const p1 = vertices[vertices.length - 2], p2 = vertices[vertices.length - 1]; for (let i = 0; i < vertices.length - 1; i++) if (isTooLinear(vertices[i], p2, newV)) return true; return isTooLinear(p1, p2, newV); }
+    function isProblemTooSharp(vertices, newV) { if (vertices.length < 2) return false; const p1 = vertices[vertices.length - 2], p2 = vertices[vertices.length - 1]; const isAxisPoint = (p) => p.x === HALF_COUNT || p.y === HALF_COUNT || (p.x === p.y); if (isAxisPoint(p1) && isAxisPoint(p2) && isAxisPoint(newV)) return false; for(let i=1; i<vertices.length; i++) if(isTooSharpAngle(vertices[i-1], vertices[i], newV)) return true; return isTooSharpAngle(p1, p2, newV); }
+    function distSq(p1, p2) { return (p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2; }
+    function calculateSymmetricPoint(v, type, isSlantedAxis = false, axisDirection = 'vertical') { let symX, symY; const C = HALF_COUNT; if (type === 'line') { if (isSlantedAxis) { symX = v.y; symY = v.x; } else if (axisDirection === 'horizontal') { symX = v.x; symY = 2 * C - v.y; } else { symX = 2 * C - v.x; symY = v.y; } } else if (type === 'point') { symX = 2 * C - v.x; symY = 2 * C - v.y; } else return v; return { x: Math.round(symX), y: Math.round(symY) }; }
+    function createSequentialLines(vertices, close = false) { const lines = []; if (vertices.length < 2) return lines; const count = vertices.length; for (let i = 0; i < count; i++) { const p1 = vertices[i], p2 = vertices[(i + 1) % count]; if (!close && i === count - 1) break; lines.push({ p1, p2 }); } return lines; }
+    function findPointSymmetricBoundary(points) { if (points.length < 3) return points; const C = CENTER_POINT, centerPoint = points.find(p => isSamePoint(p, C)), nonCenterPoints = points.filter(p => !isSamePoint(p, C)); nonCenterPoints.sort((a, b) => Math.atan2(a.y - C.y, a.x - C.x) - Math.atan2(b.y - C.y, b.x - C.x)); let sortedPoints = []; if (centerPoint) sortedPoints.push(centerPoint); sortedPoints = sortedPoints.concat(nonCenterPoints); return sortedPoints.filter((v, i, self) => i === self.findIndex((t) => isSamePoint(t, v))); }
+    function sortSlantedAxisVertices(vertices) { const axisPoints = vertices.filter(v => v.x === v.y).sort((a, b) => a.y - b.y), nonAxisPoints = vertices.filter(v => v.x !== v.y), p1 = axisPoints[0], p2 = axisPoints[1], belowAxis = nonAxisPoints.filter(p => p.y < p.x), aboveAxis = nonAxisPoints.filter(p => p.y > p.x); belowAxis.sort((a,b) => Math.atan2(a.y - p1.y, a.x - p1.x) - Math.atan2(b.y - p1.y, b.x - p1.x)); aboveAxis.sort((a,b) => Math.atan2(b.y - p2.y, b.x - p2.x) - Math.atan2(a.y - p2.y, a.x - p2.x)); return [p1, ...belowAxis, p2, ...aboveAxis]; }
+    
+    function generateRandomProblem(type, forceVertices = null) {
+        const MAX_ATTEMPTS_PER_POINT = 100;
+
+        if (type === 'line') {
+            let nVertices, minCoord, maxCoord;
+            let isSlantedAxis = false;
+            let axisDirection = 'vertical';
+            
+            const difficulty = (selectedDifficulty === 'practice') ? '1' : selectedDifficulty;
+
+            if (forceVertices) {
+                 nVertices = forceVertices;
+                 minCoord = MIN_COORD;
+                 maxCoord = MAX_COORD;
+                 isSlantedAxis = false;
+                 axisDirection = Math.random() < 0.5 ? 'vertical' : 'horizontal';
+            } else if (difficulty == 2) {
+                isSlantedAxis = Math.random() < 0.5;
+                if (isSlantedAxis) {
+                    nVertices = getRandomInt(3, 4);
+                    minCoord = MIN_COORD;
+                    maxCoord = MAX_COORD;
+                    axisDirection = 'slanted';
+                } else {
+                    nVertices = getRandomInt(5, 6);
+                    minCoord = MIN_COORD - 1;
+                    maxCoord = MAX_COORD + 1;
+                    axisDirection = Math.random() < 0.5 ? 'vertical' : 'horizontal';
+                }
+            } else {
+                isSlantedAxis = false;
+                nVertices = 4;
+                minCoord = MIN_COORD;
+                maxCoord = MAX_COORD;
+                axisDirection = Math.random() < 0.5 ? 'vertical' : 'horizontal';
+            }
+            
+            if (isSlantedAxis) {
+                const axisMidPoint = { x: HALF_COUNT, y: HALF_COUNT };
+                const axisLength = getRandomInt(Math.floor(GRID_COUNT * 0.15), Math.floor(GRID_COUNT * 0.35));
+                const p1 = {x: axisMidPoint.x - axisLength, y: axisMidPoint.y - axisLength};
+                const p2 = {x: axisMidPoint.x + axisLength, y: axisMidPoint.y + axisLength};
+                
+                let tempVertices = [p1];
+
+                for (let i = 0; i < nVertices - 2; i++) {
+                    let newV, success = false, attemptCount = 0;
+                    while (!success && attemptCount < MAX_ATTEMPTS_PER_POINT) {
+                        let x = getRandomInt(minCoord, maxCoord);
+                        let y = getRandomInt(minCoord, x - 1);
+                        newV = { x: x, y: y };
+
+                        let isValid = true;
+                        if (tempVertices.length >= 2) {
+                            if(isTooSharpAngle(tempVertices[tempVertices.length-2], tempVertices[tempVertices.length-1], newV)) {
+                                isValid = false;
+                            }
+                        }
+                        if (tempVertices.length > 0) {
+                            let symV = calculateSymmetricPoint(newV, 'line', true);
+                            if (isTooSharpAngle(tempVertices[tempVertices.length - 1], newV, symV)) {
+                                isValid = false;
+                            }
+                        }
+                        
+                        if (isValid && !isTooClose(newV, tempVertices) && !isProblemTooLinear(tempVertices, newV)) {
+                            tempVertices.push(newV);
+                            success = true;
+                        }
+                        attemptCount++;
+                    }
+                    if (!success) return null;
+                }
+                tempVertices.push(p2);
+                
+                let allVertices = [...tempVertices];
+                if (allVertices.length < 3) return null;
+                
+                if (isTooLinear(allVertices[allVertices.length-2], allVertices[allVertices.length-1], allVertices[0]) || isTooSharpAngle(allVertices[allVertices.length-2], allVertices[allVertices.length-1], allVertices[0])) {
+                    return null;
+                }
+
+                let allVerticesSorted = sortSlantedAxisVertices(allVertices);
+                
+                if (allVerticesSorted.length >= 3) {
+                    for (let i = 0; i < allVerticesSorted.length - 2; i++) {
+                        if (isTooLinear(allVerticesSorted[i], allVerticesSorted[i+1], allVerticesSorted[i+2])) {
+                            return null;
+                        }
+                    }
+                }
+                
+                const allLines = createSequentialLines(allVerticesSorted, false);
+                const initialLines = allLines.filter(line => ((line.p1.x + line.p2.x)/2) > ((line.p1.y + line.p2.y)/2));
+                
+                let initialVertices = initialLines.reduce((acc, line) => {
+                    if (!acc.some(v => isSamePoint(v, line.p1))) acc.push(line.p1);
+                    if (!acc.some(v => isSamePoint(v, line.p2))) acc.push(line.p2);
+                    return acc;
+                }, []);
+                
+                if(initialVertices.filter(v => v.x === v.y).length < 2) {
+                    return null;
+                }
+                
+                return {
+                    type: 'line', isSlantedAxis: true, axisDirection: 'slanted',
+                    initialVertices, initialLines, allVertices: allVerticesSorted, allLines
+                };
+
+            } else { // Not slanted
+                let initialVertices;
+                if (axisDirection === 'vertical') {
+                    const axisPoint1 = { x: HALF_COUNT, y: getRandomInt(minCoord, HALF_COUNT - 2) };
+                    const axisPoint2 = { x: HALF_COUNT, y: getRandomInt(HALF_COUNT + 2, maxCoord) };
+                    let nonAxisPoints = [];
+                    for (let i = 0; i < nVertices - 2; i++) {
+                        let newV, success = false, attemptCount = 0;
+                        while (!success && attemptCount < MAX_ATTEMPTS_PER_POINT) {
+                            newV = { x: getRandomInt(minCoord, HALF_COUNT - 1), y: getRandomInt(axisPoint1.y, axisPoint2.y) };
+                            let isValid = !isTooClose(newV, [...nonAxisPoints, axisPoint1, axisPoint2]);
+                            if (nonAxisPoints.length > 0 && isTooWeakSlope(nonAxisPoints[nonAxisPoints.length - 1], newV)) {
+                                isValid = false;
+                            }
+                            if (isValid) {
+                                nonAxisPoints.push(newV);
+                                success = true;
+                            }
+                            attemptCount++;
+                        }
+                        if (!success) return null;
+                    }
+                    nonAxisPoints.sort((a, b) => a.y - b.y);
+                    initialVertices = [axisPoint1, ...nonAxisPoints, axisPoint2];
+                } else { // horizontal
+                    const axisPoint1 = { x: getRandomInt(minCoord, HALF_COUNT - 2), y: HALF_COUNT };
+                    const axisPoint2 = { x: getRandomInt(HALF_COUNT + 2, maxCoord), y: HALF_COUNT };
+                    let nonAxisPoints = [];
+                    for (let i = 0; i < nVertices - 2; i++) {
+                        let newV, success = false, attemptCount = 0;
+                        while (!success && attemptCount < MAX_ATTEMPTS_PER_POINT) {
+                            newV = { x: getRandomInt(axisPoint1.x, axisPoint2.x), y: getRandomInt(minCoord, HALF_COUNT - 1) };
+                            let isValid = !isTooClose(newV, [...nonAxisPoints, axisPoint1, axisPoint2]);
+                            if (nonAxisPoints.length > 0 && isTooWeakSlope(nonAxisPoints[nonAxisPoints.length - 1], newV)) {
+                                isValid = false;
+                            }
+                            if (isValid) {
+                                nonAxisPoints.push(newV);
+                                success = true;
+                            }
+                            attemptCount++;
+                        }
+                        if (!success) return null;
+                    }
+                    nonAxisPoints.sort((a, b) => a.x - b.x);
+                    initialVertices = [axisPoint1, ...nonAxisPoints, axisPoint2];
+                }
+                
+                if (initialVertices.length < 2) return null;
+                if (initialVertices.length >= 3) {
+                    for (let i = 0; i < initialVertices.length - 2; i++) {
+                        if (isTooLinear(initialVertices[i], initialVertices[i+1], initialVertices[i+2])) {
+                            return null;
+                        }
+                    }
+                }
+                
+                let allVertices = initialVertices.concat(initialVertices.map(v => calculateSymmetricPoint(v, 'line', false, axisDirection)).reverse());
+                allVertices = allVertices.filter((v, i, self) => i === self.findIndex((t) => isSamePoint(t, v)));
+                
+                return {
+                    type: 'line', isSlantedAxis: false, axisDirection,
+                    initialVertices, initialLines: createSequentialLines(initialVertices, false),
+                    allVertices, allLines: createSequentialLines(allVertices, true)
+                };
+            }
+        } else if (type === 'point') {
+            const difficulty = (selectedDifficulty === 'practice') ? '1' : selectedDifficulty;
+            const numPoints = forceVertices ? forceVertices : (difficulty == 1) ? 4 : getRandomInt(5, 6);
+            let initialPoints = [];
+            const isHorizontalAxis = Math.random() < 0.5;
+            let lineStart, lineEnd;
+
+            if(isHorizontalAxis) {
+                const y = CENTER_POINT.y;
+                const halfLength = getRandomInt(Math.floor(GRID_COUNT * 0.15), Math.floor(GRID_COUNT * 0.35));
+                lineStart = {x: CENTER_POINT.x - halfLength, y: y};
+                lineEnd = {x: CENTER_POINT.x + halfLength, y: y};
+            } else {
+                const x = CENTER_POINT.x;
+                const halfLength = getRandomInt(Math.floor(GRID_COUNT * 0.15), Math.floor(GRID_COUNT * 0.35));
+                lineStart = {x: x, y: CENTER_POINT.y - halfLength};
+                lineEnd = {x: x, y: CENTER_POINT.y + halfLength};
+            }
+            initialPoints.push(lineStart);
+            
+            let halfVertices = [];
+            for(let i = 0; i < numPoints - 2; i++) {
+                let newV, success = false, attemptCount = 0;
+                while(!success && attemptCount < MAX_ATTEMPTS_PER_POINT) {
+                    let x, y;
+                    if(isHorizontalAxis) {
+                        x = getRandomInt(MIN_COORD, MAX_COORD);
+                        y = getRandomInt(MIN_COORD, CENTER_POINT.y - 1);
+                    } else {
+                        x = getRandomInt(MIN_COORD, CENTER_POINT.x - 1);
+                        y = getRandomInt(MIN_COORD, MAX_COORD);
+                    }
+                    newV = {x: x, y: y};
+                    
+                    if(!isTooClose(newV, [...initialPoints, ...halfVertices])) {
+                        halfVertices.push(newV);
+                        success = true;
+                    }
+                    attemptCount++;
+                }
+                if(!success) return null;
+            }
+            halfVertices.sort((a, b) => Math.atan2(a.y - CENTER_POINT.y, a.x - CENTER_POINT.x) - Math.atan2(b.y - CENTER_POINT.y, b.x - CENTER_POINT.x));
+            initialPoints = initialPoints.concat(halfVertices);
+            initialPoints.push(lineEnd);
+
+            let allVertices = [];
+            let processed = new Set();
+            initialPoints.forEach(p => {
+                const key = `${p.x},${p.y}`;
+                if (!processed.has(key)) {
+                    allVertices.push(p);
+                    processed.add(key);
+                    const symV = calculateSymmetricPoint(p, 'point');
+                    const symKey = `${symV.x},${symV.y}`;
+                    if (!processed.has(symKey)) {
+                        allVertices.push(symV);
+                        processed.add(symKey);
+                    }
+                }
+            });
+
+            allVertices = findPointSymmetricBoundary(allVertices);
+
+            if (allVertices.length >= 3) {
+                for (let i = 0; i < allVertices.length; i++) {
+                    const len = allVertices.length;
+                    const p1 = allVertices[(i - 1 + len) % len];
+                    const p2 = allVertices[i];
+                    const p3 = allVertices[(i + 1) % len];
+                    if (isTooLinear(p1, p2, p3) || isTooSharpAngle(p1, p2, p3)) {
+                        return null;
+                    }
+                }
+            }
+            
+            const allLines = createSequentialLines(allVertices, true);
+            const initialLines = [];
+            const initialSet = new Set(initialPoints.map(p => `${p.x},${p.y}`));
+            allLines.forEach(line => {
+                if(initialSet.has(`${line.p1.x},${line.p1.y}`) && initialSet.has(`${line.p2.x},${line.p2.y}`)) {
+                    initialLines.push(line);
+                }
+            });
+            
+            return {
+                type: 'point', initialVertices: initialPoints, initialLines, allVertices, allLines
+            };
+        }
+        return null;
+    }
+    
+    function initializeSetupListeners() {
+        document.querySelectorAll('#type-select button').forEach(button => {
+            button.addEventListener('click', handleTypeSelect);
+        });
+        document.querySelectorAll('#difficulty-select button').forEach(button => {
+            button.addEventListener('click', handleDifficultySelect);
+        });
+        document.getElementById('quantity-minus').addEventListener('click', () => changeQuantity(-5));
+        document.getElementById('quantity-plus').addEventListener('click', () => changeQuantity(5));
+        document.getElementById('time-minus').addEventListener('click', () => changeTimeLimit(-1));
+        document.getElementById('time-plus').addEventListener('click', () => changeTimeLimit(1));
+    }
+
+function updateSettingsOverlay() {
+    const overlay = document.getElementById('settings-overlay');
+    const message = document.getElementById('overlay-message');
+    const isPractice = selectedDifficulty === 'practice';
+
+    if (isPractice) {
+        overlay.style.display = 'flex';
+        if (gameMode === 'classic') {
+            message.innerHTML = '문제 개수는<br>3개로 고정됩니다.';
+        } else { // timeAttack
+            message.innerHTML = '시간은 2분으로<br>고정됩니다.';
+        }
+    } else {
+        overlay.style.display = 'none';
+    }
+}
+
+    function selectGameMode(mode) {
+        gameMode = mode;
+        const classicSettings = document.getElementById('classic-settings');
+        const timeAttackSettings = document.getElementById('time-attack-settings');
+
+        if (gameMode === 'classic') {
+            classicSettings.style.display = 'block';
+            timeAttackSettings.style.display = 'none';
+        } else { // timeAttack
+            classicSettings.style.display = 'none';
+            timeAttackSettings.style.display = 'block';
+        }
+        updateSettingsOverlay();
+        showPage('setup-page');
+    }
+
+    function changeTimeLimit(direction) {
+        const display = document.getElementById('time-limit-display');
+        const currentIndex = timeOptions.indexOf(timeLimitInMinutes);
+        let nextIndex = currentIndex + direction;
+
+        if (nextIndex < 0) {
+            nextIndex = timeOptions.length - 1;
+        } else if (nextIndex >= timeOptions.length) {
+            nextIndex = 0;
+        }
+
+        timeLimitInMinutes = timeOptions[nextIndex];
+        display.textContent = timeLimitInMinutes + '분';
+    }
+
+    function nextProblem() {
+        closePopup();
+        currentProblem++;
+        
+        currentProblemAttempts = 0;
+        userVertices = [];
+        userLines = [];
+
+        if (gameMode === 'timeAttack') {
+            if (timerInterval) { // End of game is handled by timer
+                let newProblem = null;
+                let attempt = 0;
+                const MAX_ATTEMPTS_NEXT = 100;
+                while (!newProblem && attempt < MAX_ATTEMPTS_NEXT) {
+                    let type = (selectedType === 'both') ? (Math.random() < 0.5 ? 'line' : 'point') : selectedType;
+                    newProblem = generateRandomProblem(type);
+                    attempt++;
+                }
+                if (newProblem) {
+                    problemList.push(newProblem);
+                } else {
+                    // Could not generate new problem, end game
+                    stopTimer();
+                    showFinalResult();
+                    return;
+                }
+            } else {
+                // Timer already stopped, just show results
+                showFinalResult();
+                return;
+            }
+        }
+        
+        if (gameMode === 'classic' && currentProblem >= totalProblems) {
+            showFinalResult();
+            return;
+        }
+
+        loadProblem();
+        saveGameState();
+    }
+
+
+    function handleTypeSelect(event) {
+        document.querySelectorAll('#type-select button').forEach(b => b.classList.remove('selected'));
+        event.currentTarget.classList.add('selected');
+        selectedType = event.currentTarget.getAttribute('data-type');
+    }
+    
+    function handleDifficultySelect(event) {
+        document.querySelectorAll('#difficulty-select button').forEach(b => b.classList.remove('selected'));
+        event.currentTarget.classList.add('selected');
+        selectedDifficulty = event.currentTarget.getAttribute('data-difficulty');
+        updateSettingsOverlay();
+    }
+
+    function changeQuantity(delta) {
+        const current = parseInt(document.getElementById('problem-quantity').textContent);
+        let newQuantity = current + delta;
+        if (newQuantity < 5) newQuantity = 5;
+        if (newQuantity > 50) newQuantity = 50;
+        document.getElementById('problem-quantity').textContent = newQuantity;
+        totalProblems = newQuantity;
+    }
+
+    function generateProblemWithRetry(type, forceVertices = null) {
+        let newProblem = null;
+        let attempt = 0;
+        const MAX_ATTEMPTS = 100;
+        while (!newProblem && attempt < MAX_ATTEMPTS) {
+            newProblem = generateRandomProblem(type, forceVertices);
+            attempt++;
+        }
+        return newProblem;
+    }
+
+function startQuiz() {
+    // 1. Clear all previous game state to prevent carryover issues.
+    currentProblem = 0;
+    score = { results: [] };
+    currentProblemAttempts = 0;
+    userVertices = [];
+    userLines = [];
+    tempLineStart = null;
+    hoveredLine = null;
+    problemList = [];
+    hasSubmittedScore = false;
+
+    // 2. Set quiz parameters based on mode and difficulty.
+    if (selectedDifficulty === 'practice') {
+        if (gameMode === 'timeAttack') {
+            timeLimitInMinutes = 2; // Fixed time limit for practice mode
+        }
+        totalProblems = 3; // Fixed number of problems for practice mode
+        
+        // Generate a specific set of practice problems
+        if (selectedType === 'line') {
+            problemList.push(generateProblemWithRetry('line', 3));
+            problemList.push(generateProblemWithRetry('line', 4));
+            problemList.push(generateProblemWithRetry('line', 5));
+        } else if (selectedType === 'point') {
+            problemList.push(generateProblemWithRetry('point', 4));
+            problemList.push(generateProblemWithRetry('point', 4));
+            problemList.push(generateProblemWithRetry('point', 4));
+        } else { // both
+            problemList.push(generateProblemWithRetry('line', 3));
+            problemList.push(generateProblemWithRetry('line', 4));
+            problemList.push(generateRandomProblem('point', 4));
+        }
+        problemList = problemList.filter(p => p !== null);
+        totalProblems = problemList.length; // Finalize total problems based on successful generation
+
+    } else { // Normal Mode
+        let problemsToGenerate = (gameMode === 'classic') ? totalProblems : 1;
+        let attempt = 0;
+        const MAX_ATTEMPTS = problemsToGenerate * 20;
+        let generatedVertexStrings = new Set();
+        
+        // Generate problems dynamically
+        while (problemList.length < problemsToGenerate && attempt < MAX_ATTEMPTS) {
+            let type = (selectedType === 'both') ? (Math.random() < 0.5 ? 'line' : 'point') : selectedType;
+            const newProblem = generateRandomProblem(type);
+            if (newProblem && newProblem.initialVertices.length >= 2) {
+                const vertexString = JSON.stringify(newProblem.initialVertices.map(v => `${v.x},${v.y}`).sort());
+                if (!generatedVertexStrings.has(vertexString)) {
+                    problemList.push(newProblem);
+                    generatedVertexStrings.add(vertexString);
+                }
+            }
+            attempt++;
+        }
+        if (gameMode === 'classic') {
+            totalProblems = problemList.length; // Adjust totalProblems to the actual number generated
+        }
+    }
+
+    // 3. Handle problem generation failure.
+    if (problemList.length === 0) {
+        alert('문제 생성에 실패했습니다. 다른 설정으로 다시 시도해 주세요.');
+        location.reload();
+        return;
+    }
+    
+    // 4. Start the quiz.
+    showPage('problem-page');
+    if (gameMode === 'timeAttack') startTimer();
+    loadProblem();
+}
+    
+    function loadProblem() {
+        const isTimed = gameMode === 'timeAttack';
+        
+        if (!isTimed && currentProblem >= totalProblems && totalProblems > 0) {
+            showFinalResult();
+            return;
+        }
+        
+        if (isTimed && currentProblem >= problemList.length && !timerInterval) {
+            showFinalResult();
+            return;
+        }
+        
+        const timerDisplay = document.getElementById('timer-display');
+        const counterDisplay = document.getElementById('problem-counter-display');
+
+        if (isTimed) {
+            counterDisplay.style.display = 'none';
+            timerDisplay.style.display = 'block';
+        } else { // Classic
+            counterDisplay.style.display = 'block';
+            timerDisplay.style.display = 'none';
+            counterDisplay.textContent = '남은 문제 ' + (totalProblems - (currentProblem + 1)) + '개';
+        }
+
+        const currentP = problemList[currentProblem];
+        if(!currentP) { // Failsafe for empty problem
+            console.error("Problem could not be loaded.", { currentProblem, problemList });
+            showFinalResult();
+            return;
+        }
+
+        const pType = currentP.type === 'line' ? '선대칭' : '점대칭';
+        
+        let problemNumText = `${currentProblem + 1}번째 문제 (${pType})`;
+        const pTypeText = currentP.type === 'line' ? '선대칭도형' : '점대칭도형';
+        let instructionText = `아래 도형은 ${pTypeText}입니다. 나머지 부분을 완성해 주세요.`;
+
+        if (window.innerWidth < 480) {
+            problemNumText = `${currentProblem + 1}번째 문제<br>(${pType})`;
+            instructionText = `아래 도형은 ${pTypeText}입니다.<br>나머지 부분을 완성해 주세요.`;
+        }
+        document.getElementById('problem-number').innerHTML = problemNumText;
+        document.getElementById('problem-instruction').innerHTML = instructionText;
+        
+        document.getElementById('check-answer-btn').style.display = 'block';
+        document.getElementById('next-problem-btn').style.display = 'none';
+        
+        closePopup();
+        
+        problemVertices = currentP.initialVertices;
+        problemLines = currentP.initialLines;
+        tempLineStart = null;
+        hoveredLine = null;
+        
+        setCanvasMode('vertex');
+        
+        redrawCanvas();
+    }
+    
+    function clearCanvas(clearUserDrawing) {
+        if (clearUserDrawing) {
+            userVertices = [];
+            userLines = [];
+            tempLineStart = null;
+            hoveredLine = null;
+        }
+        
+        redrawCanvas();
+        setCanvasMode('vertex');
+        closePopup();
+        
+        document.getElementById('check-answer-btn').style.display = 'block';
+        document.getElementById('next-problem-btn').style.display = 'none';
+    }
+    
+    function renderProblemVertices() {
+        document.querySelectorAll('.problem-dot').forEach(dot => dot.remove());
+        problemVertices.forEach((v) => {
+            const dot = document.createElement('div');
+            dot.className = 'problem-dot';
+            dot.style.left = `${(v.x / GRID_COUNT) * 100}%`;
+            dot.style.top = `${(v.y / GRID_COUNT) * 100}%`;
+            canvasWrapper.appendChild(dot);
+        });
+    }
+
+    function drawGrid() {
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 0.5;
+        
+        ctx.setLineDash([1, 4]);
+        
+        for (let x = 0; x <= canvas.width; x += GRID_SIZE) {
+            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+        }
+        for (let y = 0; y <= canvas.height; y += GRID_SIZE) {
+            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+        }
+        
+        ctx.setLineDash([]);
+
+        if (problemList.length > currentProblem && problemList[currentProblem]) {
+            const currentP = problemList[currentProblem];
+            ctx.strokeStyle = '#ff0000';
+            ctx.lineWidth = 2;
+            if (currentP.type === 'line') {
+                if (currentP.isSlantedAxis) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.lineTo(canvas.width, canvas.height);
+                    ctx.stroke();
+                } else if (currentP.axisDirection === 'vertical') {
+                    const centerX = canvas.width / 2;
+                    ctx.beginPath();
+                    ctx.moveTo(centerX, 0);
+                    ctx.lineTo(centerX, canvas.height);
+                    ctx.stroke();
+                } else if (currentP.axisDirection === 'horizontal') {
+                    const centerY = canvas.height / 2;
+                    ctx.beginPath();
+                    ctx.moveTo(0, centerY);
+                    ctx.lineTo(canvas.width, centerY);
+                    ctx.stroke();
+                }
+            } else if (currentP.type === 'point') {
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 5, 0, Math.PI * 2);
+                ctx.fillStyle = '#ff0000';
+                ctx.fill();
+            }
+        }
+    }
+
+    function drawLines(lines, color) {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 3;
+        lines.forEach(line => {
+            ctx.beginPath();
+            ctx.moveTo(line.p1.x * GRID_SIZE, line.p1.y * GRID_SIZE);
+            ctx.lineTo(line.p2.x * GRID_SIZE, line.p2.y * GRID_SIZE);
+            ctx.stroke();
+        });
+    }
+
+    function redrawCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawGrid();
+
+        drawLines(problemLines, '#007bff');
+        drawLines(userLines, '#28a745');
+        
+        if (hoveredLine) {
+            ctx.save();
+            ctx.strokeStyle = 'rgba(234, 153, 153, 0.5)';
+            ctx.lineWidth = 8;
+            ctx.shadowColor = 'rgba(234, 153, 153, 0.7)';
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.moveTo(hoveredLine.p1.x * GRID_SIZE, hoveredLine.p1.y * GRID_SIZE);
+            ctx.lineTo(hoveredLine.p2.x * GRID_SIZE, hoveredLine.p2.y * GRID_SIZE);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        renderProblemVertices();
+
+        if (canvasMode === 'line') {
+            renderPointsForLineMode();
+        } else {
+            renderUserVertices();
+        }
+    }
+
+    function renderPointsForLineMode() {
+        document.querySelectorAll('.user-dot, .line-dot, .selected-line-dot').forEach(dot => dot.remove());
+
+        const allPoints = [...problemVertices, ...userVertices].filter((v, i, self) => i === self.findIndex(t => isSamePoint(t, v)));
+        
+        allPoints.forEach((v) => {
+            const dot = document.createElement('div');
+            dot.className = (tempLineStart && isSamePoint(v, tempLineStart)) ? 'selected-line-dot' : 'line-dot';
+            dot.style.left = `${(v.x / GRID_COUNT) * 100}%`;
+            dot.style.top = `${(v.y / GRID_COUNT) * 100}%`;
+            canvasWrapper.appendChild(dot);
+        });
+    }
+
+    function renderUserVertices() {
+        document.querySelectorAll('.user-dot, .line-dot, .selected-line-dot').forEach(dot => dot.remove());
+
+        userVertices.forEach((v) => {
+            const dot = document.createElement('div');
+            dot.className = 'user-dot';
+            dot.style.left = `${(v.x / GRID_COUNT) * 100}%`;
+            dot.style.top = `${(v.y / GRID_COUNT) * 100}%`;
+            canvasWrapper.appendChild(dot);
+        });
+    }
+
+    function isVertexOnProblemBoundary(v) {
+        return problemVertices.some(pv => isSamePoint(pv, v));
+    }
+    
+    function showPopup(mainMessage, detailMessage, isCorrect) {
+        const popupOverlay = document.getElementById('result-popup-overlay');
+        const popupMainMessage = document.getElementById('popup-main-message');
+        const popupDetailMessage = document.getElementById('popup-detail-message');
+        const popupNextBtn = document.getElementById('popup-next-btn');
+
+        if (isCorrect) {
+            popupMainMessage.innerHTML = mainMessage;
+            popupMainMessage.className = 'correct';
+            popupDetailMessage.style.display = 'none';
+            popupNextBtn.style.display = 'block';
+        } else {
+            popupMainMessage.innerHTML = `${mainMessage}<br><span style="font-size: 80%;">${detailMessage}</span>`;
+            popupMainMessage.className = 'incorrect';
+            popupDetailMessage.style.display = 'none';
+            popupNextBtn.style.display = 'none';
+        }
+        
+        popupOverlay.style.display = 'flex';
+    }
+
+    function closePopup() {
+        document.getElementById('result-popup-overlay').style.display = 'none';
+    }
+    
+    function checkAnswer() {
+        const currentP = problemList[currentProblem];
+        if (!currentP) return false;
+        const problemType = currentP.type;
+        let verticesAreCorrect = checkVerticesSymmetry(problemType), isLinesCorrect = false;
+        if (verticesAreCorrect) {
+            if (problemType === 'line') isLinesCorrect = checkLineSymmetryLines(currentP);
+            else if (problemType === 'point') isLinesCorrect = checkPointSymmetryLines(currentP);
+        }
+        if (verticesAreCorrect && isLinesCorrect) {
+            if (score.results.length === currentProblem) {
+                score.results.push(currentProblemAttempts);
+            }
+            showPopup('정답입니다🎉', '', true);
+            saveGameState();
+            document.getElementById('check-answer-btn').style.display = 'none';
+            document.getElementById('next-problem-btn').style.display = 'block';
+            return true;
+        } else {
+            let detailMessage;
+            if (!verticesAreCorrect) detailMessage = '꼭짓점의 위치나 개수가 잘못되었어요.';
+            else if (!isLinesCorrect) detailMessage = '도형이 대칭을 이루지 않거나 빠뜨린 선분이 있어요.';
+            else detailMessage = '꼭짓점이나 선분 연결에 오류가 있어 대칭도형이 완성되지 않았습니다.';
+            currentProblemAttempts++;
+            saveGameState();
+            showPopup('다시 생각해 볼까요?', detailMessage, false);
+            document.getElementById('check-answer-btn').style.display = 'block';
+            document.getElementById('next-problem-btn').style.display = 'none';
+            return false;
+        }
+    }
+
+    function checkVerticesSymmetry(problemType) { const currentP = problemList[currentProblem]; const isSlantedAxis = (currentP.type === 'line' && currentP.isSlantedAxis); const allProblemAndUserVerticesSet = new Map(); [...problemVertices, ...userVertices].forEach(v => { const key = `${Math.round(v.x)},${Math.round(v.y)}`; if (!allProblemAndUserVerticesSet.has(key)) allProblemAndUserVerticesSet.set(key, { x: Math.round(v.x), y: Math.round(v.y) }); }); const finalVertices = Array.from(allProblemAndUserVerticesSet.values()); if (problemType === 'line') { let boundaryVerticesCount; if (isSlantedAxis) boundaryVerticesCount = finalVertices.filter(v => v.x === v.y).length; else if (currentP.axisDirection === 'vertical') boundaryVerticesCount = finalVertices.filter(v => v.x === HALF_COUNT).length; else if (currentP.axisDirection === 'horizontal') boundaryVerticesCount = finalVertices.filter(v => v.y === HALF_COUNT).length; if ((finalVertices.length - boundaryVerticesCount) % 2 !== 0) return false; } let symmetricPairs = new Map(); for (const v of finalVertices) { const key = `${v.x},${v.y}`; if (symmetricPairs.has(key)) continue; const symmetricV = calculateSymmetricPoint(v, problemType, isSlantedAxis, currentP.axisDirection); if (isSamePoint(v, symmetricV)) { symmetricPairs.set(key, true); continue; } if (!finalVertices.some(av => isSamePoint(av, symmetricV))) return false; symmetricPairs.set(key, true); symmetricPairs.set(`${symmetricV.x},${symmetricV.y}`, true); } return true; }
+    function checkLineSymmetryLines(currentP) { const correctSymmetricLines = currentP.initialLines.map(line => ({ p1: calculateSymmetricPoint(line.p1, 'line', currentP.isSlantedAxis, currentP.axisDirection), p2: calculateSymmetricPoint(line.p2, 'line', currentP.isSlantedAxis, currentP.axisDirection) })); if (userLines.length !== correctSymmetricLines.length) return false; for (const userLine of userLines) if (!correctSymmetricLines.some(correctLine => isSameLine(userLine, correctLine))) return false; return true; }
+    function checkPointSymmetryLines(currentP) { const allDrawnLines = [...problemLines, ...userLines], correctLines = currentP.allLines; if (allDrawnLines.length !== correctLines.length) return false; const correctLinesCopy = [...correctLines]; for (const drawnLine of allDrawnLines) { const matchIndex = correctLinesCopy.findIndex(correctLine => isSameLine(drawnLine, correctLine)); if (matchIndex === -1) return false; correctLinesCopy.splice(matchIndex, 1); } return correctLinesCopy.length === 0; }
+    function findClosestValidLinePoint(v) { const allTargetVertices = [...problemVertices, ...userVertices]; if (problemList.length > currentProblem && problemList[currentProblem].type === 'point') allTargetVertices.push(CENTER_POINT); let closestPoint = null, minDistSq = Infinity; for (const p of allTargetVertices) { const dist = distSq(v, p); if (dist < minDistSq) { minDistSq = dist; closestPoint = p; } } return closestPoint; }
+    function setCanvasMode(mode) { canvasMode = mode; const vertexBtn = document.getElementById('mode-vertex'), lineBtn = document.getElementById('mode-line'); vertexBtn.classList.remove('mode-btn-active'); lineBtn.classList.remove('mode-btn-active'); const canStartLineDrawing = userVertices.length >= 1 || problemVertices.length > 1; if (mode === 'vertex') { vertexBtn.classList.add('mode-btn-active'); tempLineStart = null; } else { lineBtn.classList.add('mode-btn-active'); vertexBtn.disabled = false; } document.getElementById('mode-line').disabled = !canStartLineDrawing; redrawCanvas(); }
+    
+    function getTargetTimeForProblem(problem) {
+        const isDiff2 = selectedDifficulty == 2;
+        if (problem.type === 'line') {
+            return isDiff2 ? 20 : 10;
+        } else { // point
+            return isDiff2 ? 90 : 60;
+        }
+    }
+
+    function showFinalResult() {
+        if (gameMode === 'timeAttack') {
+            stopTimer();
+        }
+        if (gameMode === 'timeAttack' && selectedDifficulty !== 'practice') {
+             totalProblems = score.results.length;
+        }
+
+        saveGameState();
+        showPage('final-result-page');
+
+        // 정확도와 최종 점수 계산 로직
+        let correctCount = 0;
+        let retriedCount = 0;
+        let totalWeightedScore = 0;
+        score.results.forEach(attempts => {
+            if (attempts === 0) {
+                correctCount++;
+                totalWeightedScore += 1.0;
+            } else {
+                retriedCount++;
+                totalWeightedScore += Math.max(0, 1.0 - attempts * 0.4);
+            }
+        });
+        
+        const total = score.results.length; 
+        const accuracy = total > 0 ? parseFloat(((totalWeightedScore / total) * 100).toFixed(1)) : 0;
+        finalAccuracyValue = accuracy;
+        
+        let finalScore = 0;
+        
+        const isPractice = selectedDifficulty === 'practice';
+
+        document.getElementById('final-result-title').textContent = isPractice ? '연습 완료' : '학습 완료';
+        const scoreDisplay = document.querySelector('.score-display');
+        const hofButton = document.getElementById('show-hof-btn');
+
+        if(isPractice) {
+            scoreDisplay.style.display = 'none';
+            hofButton.style.display = 'none';
+        } else {
+            scoreDisplay.style.display = 'block';
+            hofButton.style.display = 'block';
+        }
+
+        if (gameMode === 'timeAttack' && !isPractice) {
+            const totalProblemsSolved = total;
+            document.getElementById('time-attack-avg-time').style.display = 'block';
+
+            if (totalProblemsSolved === 0) {
+                finalScore = 0;
+                document.getElementById('avg-time-display').textContent = 'N/A';
+            } else {
+                const totalTimeSpent = (timeLimitInMinutes * 60) - remainingTime;
+                const averageTimePerProblem = totalProblemsSolved > 0 ? totalTimeSpent / totalProblemsSolved : 0;
+                
+                let totalTargetTime = 0;
+                for (let i = 0; i < totalProblemsSolved; i++) {
+                    const problem = problemList[i];
+                    if (problem.type === 'point') {
+                         if (selectedDifficulty == 2) {
+                             totalTargetTime += 90;
+                         } else {
+                             totalTargetTime += 60;
+                         }
+                    } else { // 'line' 또는 'both'
+                        if (selectedDifficulty == 2) {
+                             totalTargetTime += 20;
+                        } else {
+                             totalTargetTime += 10;
+                        }
+                    }
+                }
+                const averageTargetTime = totalProblemsSolved > 0 ? totalTargetTime / totalProblemsSolved : 0;
+                
+                const speedRatio = averageTimePerProblem > 0 ? averageTargetTime / averageTimePerProblem : 0;
+                
+                const difficultyMultiplier = (selectedDifficulty == 2) ? 1.5 : 1.2;
+                finalScore = Math.round(speedRatio * (accuracy / 100) * 5000 * difficultyMultiplier);
+                
+                document.getElementById('avg-time-display').textContent = averageTimePerProblem.toFixed(1);
+            }
+        } else { // Classic Mode or Practice
+            document.getElementById('time-attack-avg-time').style.display = 'none';
+             if (!isPractice) {
+                 let typeMultiplier = 1.0;
+                 if (selectedType === 'point') typeMultiplier = 1.1;
+                 else if (selectedType === 'both') typeMultiplier = 1.05;
+                 const difficultyMultiplier = (selectedDifficulty == 2) ? 1.5 : 1;
+                 finalScore = Math.round((total * accuracy) * difficultyMultiplier * typeMultiplier);
+             }
+        }
+        finalScoreValue = finalScore;
+        document.getElementById('correct-count').textContent = correctCount;
+        document.getElementById('retried-count').textContent = retriedCount;
+        document.getElementById('final-accuracy').textContent = `${accuracy}%`;
+        if (!isPractice) {
+            document.getElementById('final-score').textContent = finalScore;
+        }
+    }
+
+    function handleCanvasMouseMove(event) { if (document.getElementById('check-answer-btn').style.display === 'none') { if (hoveredLine) { hoveredLine = null; canvas.style.cursor = 'default'; redrawCanvas(); } return; } const rect = canvas.getBoundingClientRect(); const mouseXRatio = (event.clientX - rect.left) / rect.width, mouseYRatio = (event.clientY - rect.top) / rect.height; const canvasX = mouseXRatio * canvas.width, canvasY = mouseYRatio * canvas.height, mousePoint = { x: canvasX / GRID_SIZE, y: canvasY / GRID_SIZE }; let bestLine = null, minDistSq = 0.25; for (const line of userLines) { const p1 = line.p1, p2 = line.p2, lineLengthSq = distSq(p1, p2); if (lineLengthSq === 0) continue; let t = ((mousePoint.x - p1.x) * (p2.x - p1.x) + (mousePoint.y - p1.y) * (p2.y - p1.y)) / lineLengthSq; if (t > 0.2 && t < 0.8) { const closestPointOnLine = { x: p1.x + t * (p2.x - p1.x), y: p1.y + t * (p2.y - p1.y) }; const distanceSq = distSq(mousePoint, closestPointOnLine); if (distanceSq < minDistSq) { minDistSq = distanceSq; bestLine = line; } } } if (!isSameLine(hoveredLine, bestLine)) { hoveredLine = bestLine; redrawCanvas(); } if (hoveredLine) canvas.style.cursor = 'pointer'; else if (canvasMode === 'line') canvas.style.cursor = 'pointer'; else canvas.style.cursor = 'crosshair'; }
+    function showQrPopup() { document.getElementById('qr-popup-overlay').style.display = 'flex'; }
+    function closeQrPopup() { document.getElementById('qr-popup-overlay').style.display = 'none'; }
+    
+// showHofPopup 함수 수정: 전체 기간 최고 득점자(Overall Top Scorer)를 불러옵니다.
+function showHofPopup() {
+    const messageEl = document.getElementById('hof-message');
+    const inputGroup = document.querySelector('.hof-input-group');
+    const classicTbody = document.querySelector('#hof-table-classic tbody');
+    const timeAttackTbody = document.querySelector('#hof-table-timeattack tbody');
+    
+    document.getElementById('hof-reset-message').style.display = 'block';
+
+    if (hasSubmittedScore) {
+        inputGroup.style.display = 'none';
+        messageEl.textContent = '이번 학습 기록은 이미 등록되었습니다.';
+        messageEl.style.color = 'blue';
+    } else {
+        inputGroup.style.display = 'block';
+        messageEl.textContent = '';
+        document.getElementById('hof-initial').value = '';
+        document.getElementById('hof-submit-btn').disabled = false;
+    }
+
+    classicTbody.innerHTML = '<tr><td colspan="3">불러오는 중...</td></tr>';
+    timeAttackTbody.innerHTML = '<tr><td colspan="3">불러오는 중...</td></tr>';
+    document.getElementById('hof-popup-overlay').style.display = 'flex';
+    
+    // 캐시를 무시하기 위해 타임스탬프 파라미터 추가
+    fetch(webAppUrl + '?v=' + new Date().getTime())
+        .then(response => {
+            if (!response.ok) {
+                // HTTP 오류 발생 시 에러를 던져 catch 블록으로 이동
+                throw new Error('Network error: HTTP status ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Apps Script에서 반환된 'overallTopScorer' 데이터 사용
+            const classicOverallTopScorer = data.classicOverallTopScorer;
+            const timeAttackOverallTopScorer = data.timeAttackOverallTopScorer;
+            
+            // 당일 순위와 전체 최고 득점자를 함께 표시
+            populateHofTable(classicTbody, data.classic || [], '클래식', classicOverallTopScorer);
+            populateHofTable(timeAttackTbody, data.timeAttack || [], '타임어택', timeAttackOverallTopScorer);
+        })
+        .catch(error => {
+            classicTbody.innerHTML = '<tr><td colspan="3">기록을 불러오는 데 실패했습니다.</td></tr>';
+            timeAttackTbody.innerHTML = '<tr><td colspan="3">기록을 불러오는 데 실패했습니다.</td></tr>';
+            messageEl.textContent = '기록 불러오기 실패: 서버 연결 또는 응답 오류.';
+            messageEl.style.color = 'red';
+            console.error('Error fetching leaderboard:', error);
+        });
+}
+
+// populateHofTable 함수 수정: 전체 기간 최고 득점자(overallTopScorer) 표시 로직 통합
+function populateHofTable(tbody, data, modeName, overallTopScorer) {
+    tbody.innerHTML = '';
+
+    // 1. 전체 최고 득점자 행을 가장 먼저 추가합니다.
+    if (overallTopScorer) {
+        const topScorerRow = `<tr style="font-weight: bold; color: #4b8134;">
+                                  <td>⭐</td>
+                                  <td>${overallTopScorer.initial} 🏆</td>
+                                  <td>${overallTopScorer.score}</td>
+                              </tr>`;
+        tbody.innerHTML += topScorerRow;
+    }
+    
+    if (!data || data.length === 0) {
+        tbody.innerHTML += `<tr><td colspan="3">아직 등록된 ${modeName} 기록이 없습니다.</td></tr>`;
+        return;
+    }
+    
+    // 2. 전체 최고 득점자 데이터를 당일 순위 목록에서 제거합니다. (순위 중복 방지)
+    const filteredData = data.filter(item => !(overallTopScorer && item.score === overallTopScorer.score && item.initial === overallTopScorer.initial));
+
+    let rank = 1;
+    let rankOffset = 0;
+    let prevScore = null;
+
+    // 3. 필터링된 데이터로 당일 순위표(1~20위)를 채웁니다.
+    filteredData.forEach((item, index) => {
+        if (prevScore !== null && item.score < prevScore) {
+            rank += rankOffset + 1;
+            rankOffset = 0;
+        } else if (prevScore !== null && item.score === prevScore) {
+            rankOffset++;
+        }
+        
+        prevScore = item.score;
+        
+        if (rank > 20) {
+            return;
+        }
+
+        let initialStyle = '';
+        if (rank === 1) initialStyle = 'style="color: #d4af37; font-weight: bold; text-shadow: 0 0 4px #fff, 0 0 6px #ff0;"';
+        if (rank === 2) initialStyle = 'style="color: #c0c0c0; font-weight: bold; text-shadow: 0 0 3px #fff;"';
+        if (rank === 3) initialStyle = 'style="color: #cd7f32; font-weight: bold; text-shadow: 0 0 3px #fff;"';
+        
+        const row = `<tr><td>${rank}</td><td ${initialStyle}>${item.initial} ${rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : ''}</td><td>${item.score}</td></tr>`;
+        tbody.innerHTML += row;
+    });
+}
+
+function closeHofPopup() { document.getElementById('hof-popup-overlay').style.display = 'none'; }
+
+function saveGameState() {
+    if (document.getElementById('problem-page').style.display === 'block' && problemList.length === 0) {
+        return;
+    }
+    const gameState = { problemList, currentProblem, score, userVertices, userLines, canvasMode, selectedType, selectedDifficulty, totalProblems, currentProblemAttempts, finalScoreValue, hasSubmittedScore, gameMode, timeLimitInMinutes, remainingTime };
+    localStorage.setItem('quizState', JSON.stringify(gameState));
+}
+
+function loadGameState() {
+    const savedStateString = localStorage.getItem('quizState');
+    if (!savedStateString) return 'none';
+
+    const savedState = JSON.parse(savedStateString);
+    if (!savedState || !savedState.problemList || !savedState.score || !savedState.gameMode) {
+        return 'none';
+    }
+    
+    const isClassicInProgress = savedState.gameMode === 'classic' &&
+                                savedState.totalProblems > 0 &&
+                                savedState.currentProblem < savedState.totalProblems;
+
+    const isTimeAttackInProgress = savedState.gameMode === 'timeAttack' &&
+                                     savedState.remainingTime > 0;
+
+    if (isClassicInProgress || isTimeAttackInProgress) {
+        problemList = savedState.problemList;
+        currentProblem = savedState.currentProblem;
+        score = savedState.score;
+        canvasMode = savedState.canvasMode;
+        selectedType = savedState.selectedType;
+        selectedDifficulty = savedState.selectedDifficulty;
+        totalProblems = savedState.totalProblems;
+        currentProblemAttempts = savedState.currentProblemAttempts;
+        finalScoreValue = savedState.finalScoreValue;
+        hasSubmittedScore = savedState.hasSubmittedScore;
+        gameMode = savedState.gameMode;
+        timeLimitInMinutes = savedState.timeLimitInMinutes;
+        remainingTime = savedState.remainingTime;
+        userVertices = savedState.userVertices || [];
+        userLines = savedState.userLines || [];
+
+        if (gameMode === 'timeAttack' && remainingTime > 0) {
+            startTimer(true);
+        }
+        return 'in-progress';
+    }
+
+    const isFinished = savedState.score.results.length > 0 || 
+                           (savedState.gameMode === 'timeAttack' && savedState.remainingTime <= 0);
+
+    if (isFinished) {
+        Object.assign(window, savedState); 
+        return 'finished';
+    }
+    
+    return 'none';
+}
+
+function clearGameState() { localStorage.removeItem('quizState'); }
+
+// submitScore 함수 수정: Promise 체인과 에러 핸들링 강화
+function submitScore() {
+    const initialInput = document.getElementById('hof-initial');
+    const initial = initialInput.value;
+    const submitBtn = document.getElementById('hof-submit-btn');
+    const messageEl = document.getElementById('hof-message');
+    
+    if (!/^[A-Z]{3}$/.test(initial)) {
+        messageEl.textContent = '이니셜은 영어 대문자 3글자로 입력해주세요.';
+        messageEl.style.color = 'red';
+        return;
+    }
+    
+    if (blockedWords.includes(initial)) {
+        messageEl.textContent = '타인에게 불쾌감을 주는 단어는 사용할 수 없습니다.';
+        messageEl.style.color = 'red';
+        return;
+    }
+    
+    submitBtn.disabled = true;
+    messageEl.textContent = '등록 중...';
+    messageEl.style.color = '#333';
+    
+    const data = {
+        action: 'submitScore',
+        initial,
+        score: finalScoreValue,
+        problems: problemList.length,
+        accuracy: finalAccuracyValue,
+        difficulty: selectedDifficulty,
+        type: selectedType,
+        mode: gameMode
+    };
+    
+    fetch(webAppUrl, {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(result => {
+        if (result.result === 'success') {
+            hasSubmittedScore = true;
+            saveGameState();
+            messageEl.textContent = '성공적으로 등록되었습니다!';
+            messageEl.style.color = '#4B8134';
+            document.querySelector('.hof-input-group').style.display = 'none';
+            setTimeout(showHofPopup, 1500); 
+        } else {
+            throw new Error(result.message || 'Apps Script 처리 오류');
+        }
+    })
+    .catch(error => {
+        let displayMessage = '등록에 실패했습니다. 다시 시도해주세요.';
+        if (error.name === 'SyntaxError') {
+             displayMessage = '등록 실패: 서버 응답 형식 오류 (Apps Script ContentService 배포 확인).';
+        } else if (error.message.includes('Apps Script 처리 오류')) {
+            displayMessage = `등록 실패: ${error.message}`;
+        }
+        
+        messageEl.textContent = displayMessage;
+        messageEl.style.color = 'red';
+        submitBtn.disabled = false;
+        console.error('Error submitting score:', error);
+    });
+}
+    
+    function startTimer(isResuming = false) { stopTimer(); if (!isResuming) remainingTime = timeLimitInMinutes * 60; const timerDisplay = document.getElementById('timer-display'); timerDisplay.style.display = 'block'; updateTimerDisplay(); timerInterval = setInterval(() => { remainingTime--; updateTimerDisplay(); if (remainingTime <= 0) { stopTimer(); showFinalResult(); } }, 1000); }
+    function stopTimer() { clearInterval(timerInterval); timerInterval = null; }
+    
+    function updateTimerDisplay() {
+        const timerDisplay = document.getElementById('timer-display');
+        if (remainingTime < 0) remainingTime = 0;
+        const minutes = Math.floor(remainingTime / 60);
+        const seconds = remainingTime % 60;
+        timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        timerDisplay.classList.toggle('time-warning', remainingTime <= 60 && remainingTime > 0);
+    }
+
+    window.onload = () => {
+        try {
+            setupGrid();
+            const gameState = loadGameState();
+            
+            // ⭐ 첫 페이지 노출 오류 수정: 초기 페이지를 명시적으로 보이게 함
+            const modeSelectionPage = document.getElementById('mode-selection-page');
+            modeSelectionPage.style.display = 'flex'; 
+
+            if (gameState === 'finished') {
+                showFinalResult();
+            } else if (gameState === 'in-progress') {
+                showPage('problem-page');
+                loadProblem();
+            } else {
+                resetGame();
+                showPage('mode-selection-page');
+            }
+
+            initializeSetupListeners();
+            document.getElementById('classic-mode-btn').addEventListener('click', () => selectGameMode('classic'));
+            document.getElementById('time-attack-mode-btn').addEventListener('click', () => selectGameMode('timeAttack'));
+            document.getElementById('back-to-mode-select-btn').addEventListener('click', () => {
+                if (confirm('진행 상황이 사라집니다. 정말로 첫 페이지로 돌아갈까요?')) {
+                    resetGame();
+                    showPage('mode-selection-page');
+                }
+            });
+            
+            canvas.addEventListener('mousemove', handleCanvasMouseMove);
+            canvas.addEventListener('mouseleave', () => { if (hoveredLine) { hoveredLine = null; redrawCanvas(); } });
+
+            canvas.addEventListener('click', (event) => {
+                if (document.getElementById('check-answer-btn').style.display === 'none') return;
+                if (hoveredLine) { userLines = userLines.filter(line => !isSameLine(line, hoveredLine)); hoveredLine = null; handleCanvasMouseMove(event); redrawCanvas(); saveGameState(); return; }
+                const rect = canvas.getBoundingClientRect(); const mouseXRatio = (event.clientX - rect.left) / rect.width; const mouseYRatio = (event.clientY - rect.top) / rect.height; const gridX = Math.round(mouseXRatio * canvas.width / GRID_SIZE); const gridY = Math.round(mouseYRatio * canvas.height / GRID_SIZE); if (gridX < 0 || gridX > GRID_COUNT || gridY < 0 || gridY > GRID_COUNT) return; const clickedGridPoint = { x: gridX, y: gridY };
+                if (canvasMode === 'vertex') {
+                    if (isVertexOnProblemBoundary(clickedGridPoint)) return;
+                    const existingIndex = userVertices.findIndex(v => isSamePoint(v, clickedGridPoint));
+                    if (existingIndex > -1) { userVertices.splice(existingIndex, 1); userLines = userLines.filter(line => !(isSamePoint(line.p1, clickedGridPoint) || isSamePoint(line.p2, clickedGridPoint))); } else { userVertices.push(clickedGridPoint); }
+                    redrawCanvas();
+                    saveGameState();
+                } else if (canvasMode === 'line') {
+                    const targetPoint = findClosestValidLinePoint(clickedGridPoint); if (!targetPoint) return;
+                    if (!tempLineStart) { tempLineStart = targetPoint; } else {
+                        if (!isSamePoint(tempLineStart, targetPoint)) { const newLine = { p1: tempLineStart, p2: targetPoint }; if (!isLineExists(newLine)) userLines.push(newLine); else userLines = userLines.filter(existingLine => !isSameLine(existingLine, newLine)); }
+                        tempLineStart = null;
+                    }
+                    redrawCanvas();
+                    saveGameState();
+                }
+            });
+
+            document.getElementById('start-quiz-btn').addEventListener('click', startQuiz);
+            document.getElementById('next-problem-btn').addEventListener('click', nextProblem);
+            document.getElementById('clear-canvas-btn').addEventListener('click', () => { document.getElementById('confirm-clear-popup-overlay').style.display = 'flex'; });
+            
+            document.querySelector('#problem-page .home-button').addEventListener('click', () => {
+                if (confirm('진행 상황이 사라집니다. 정말로 첫 페이지로 돌아갈까요?')) {
+                    resetGame();
+                    showPage('mode-selection-page');
+                }
+            });
+            
+            document.getElementById('qr-code-btn').addEventListener('click', showQrPopup);
+            document.getElementById('show-hof-btn').addEventListener('click', showHofPopup);
+            document.getElementById('hof-submit-btn').addEventListener('click', submitScore);
+            document.getElementById('confirm-clear-yes-btn').addEventListener('click', () => { clearCanvas(true); saveGameState(); document.getElementById('confirm-clear-popup-overlay').style.display = 'none'; });
+            document.getElementById('confirm-clear-no-btn').addEventListener('click', () => { document.getElementById('confirm-clear-popup-overlay').style.display = 'none'; });
+            
+            document.getElementById('restart-btn').addEventListener('click', () => {
+                resetGame();
+                showPage('mode-selection-page');
+            });
+            
+            const saveOnExit = () => { if (isExitingIntentionally) return; if (document.getElementById('problem-page').style.display === 'block') saveGameState(); };
+            window.addEventListener('pagehide', saveOnExit);
+            window.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') saveOnExit(); });
+
+            const checkAnswerBtn = document.getElementById('check-answer-btn');
+            const progressBar = checkAnswerBtn.querySelector('.progress-bar');
+            let pressTimer = null;
+            let isPressing = false;
+            const PRESS_AND_HOLD_DURATION = 400;
+
+            const startPress = (event) => {
+                if (event.type === 'mousedown' && event.button !== 0) return;
+                event.preventDefault();
+                if (isPressing) return;
+
+                isPressing = true;
+                progressBar.style.transition = `transform ${PRESS_AND_HOLD_DURATION / 1000}s linear`;
+                progressBar.style.transform = 'translateX(0%)';
+
+                pressTimer = setTimeout(() => {
+                    if (!isPressing) return;
+                    const isCorrect = checkAnswer();
+                    if (!isCorrect) {
+                        cancelPress();
+                    }
+                }, PRESS_AND_HOLD_DURATION);
+            };
+
+            const cancelPress = () => {
+                if (!isPressing) return;
+                isPressing = false;
+                clearTimeout(pressTimer);
+                pressTimer = null;
+                
+                progressBar.style.transition = 'transform 0.2s ease-out';
+                progressBar.style.transform = 'translateX(-100%)';
+            };
+
+            checkAnswerBtn.addEventListener('mousedown', startPress);
+            checkAnswerBtn.addEventListener('touchstart', startPress, { passive: false });
+            checkAnswerBtn.addEventListener('mouseup', cancelPress);
+            checkAnswerBtn.addEventListener('mouseleave', cancelPress);
+            checkAnswerBtn.addEventListener('touchend', cancelPress);
+        } catch (error) {
+            console.error("오류가 발생하여 앱을 초기화합니다:", error);
+            
+            clearGameState(); 
+            try {
+                resetGame();
+                showPage('mode-selection-page');
+                initializeSetupListeners();
+                document.getElementById('classic-mode-btn').addEventListener('click', () => selectGameMode('classic'));
+                document.getElementById('time-attack-mode-btn').addEventListener('click', () => selectGameMode('timeAttack'));
+            } catch (recoveryError) {
+                console.error("복구 중 추가 오류 발생:", recoveryError);
+                alert("치명적인 오류가 발생하여 페이지를 새로고침합니다.");
+                location.reload();
+            }
+        }
+    };
+</script>
 
 </body>
 </html>
