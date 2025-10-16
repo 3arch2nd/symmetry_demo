@@ -937,7 +937,8 @@ button:hover {
 
 <script>
     const webAppUrl = 'https://patient-thunder-7347.bbglara.workers.dev/';
-    
+    const blockedWords = ['SEX', 'FUK', 'ASS', 'FUX', 'WTF']; 
+
     const timeOptions = [3, 5, 7];
     let selectedType = 'line', totalProblems = 5, currentProblem = 0, canvasMode = 'vertex', score = { results: [] }, currentProblemAttempts = 0, selectedDifficulty = '1', finalAccuracyValue = 0, finalScoreValue = 0, hasSubmittedScore = false, isExitingIntentionally = false, gameMode = 'classic', timeLimitInMinutes = 3, remainingTime = 0, timerInterval = null;
     const canvas = document.getElementById('grid-canvas'), ctx = canvas.getContext('2d'), canvasWrapper = document.querySelector('.canvas-wrapper');
@@ -2038,50 +2039,62 @@ function populateHofTable(tbody, data, modeName, topScorer) {
 
     function clearGameState() { localStorage.removeItem('quizState'); }
     
-    // submitScore 함수에서 데이터 전송 시 'mode'와 'score'를 함께 보냅니다.
-function submitScore() { 
-    const initialInput = document.getElementById('hof-initial'), 
-        initial = initialInput.value, 
-        submitBtn = document.getElementById('hof-submit-btn'), 
-        messageEl = document.getElementById('hof-message');
-    if (!/^[A-Z]{3}$/.test(initial)) { 
-        messageEl.textContent = '이니셜은 영어 대문자 3글자로 입력해주세요.'; 
-        messageEl.style.color = 'red'; 
-        return; 
-    } 
-    submitBtn.disabled = true; 
-    messageEl.textContent = '등록 중...'; 
-    messageEl.style.color = '#333'; 
-    const data = { 
+   // submitScore 함수에 필터링 로직 추가
+function submitScore() {
+    const initialInput = document.getElementById('hof-initial');
+    const initial = initialInput.value;
+    const submitBtn = document.getElementById('hof-submit-btn');
+    const messageEl = document.getElementById('hof-message');
+    
+    // 이니셜이 3글자 대문자인지 확인
+    if (!/^[A-Z]{3}$/.test(initial)) {
+        messageEl.textContent = '이니셜은 영어 대문자 3글자로 입력해주세요.';
+        messageEl.style.color = 'red';
+        return;
+    }
+    
+    // 불쾌감을 주는 단어 필터링
+    if (blockedWords.includes(initial)) {
+        messageEl.textContent = '타인에게 불쾌감을 주는 단어는 사용할 수 없습니다.';
+        messageEl.style.color = 'red';
+        return;
+    }
+    
+    submitBtn.disabled = true;
+    messageEl.textContent = '등록 중...';
+    messageEl.style.color = '#333';
+    
+    const data = {
         action: 'submitScore',
-        initial, 
-        score: finalScoreValue, 
-        problems: problemList.length, 
-        accuracy: finalAccuracyValue, 
-        difficulty: selectedDifficulty, 
-        type: selectedType, 
+        initial,
+        score: finalScoreValue,
+        problems: problemList.length,
+        accuracy: finalAccuracyValue,
+        difficulty: selectedDifficulty,
+        type: selectedType,
         mode: gameMode
-    }; 
-    fetch(webAppUrl, { 
-        method: 'POST', 
-        cache: 'no-cache', 
-        headers: { 'Content-Type': 'application/json' }, 
-        body: JSON.stringify(data) 
-    }).then(response => response.json()).then(result => { 
-        if (result.result === 'success') { 
-            hasSubmittedScore = true; 
-            saveGameState(); 
-            messageEl.textContent = '성공적으로 등록되었습니다!'; 
-            messageEl.style.color = '#4B8134'; 
-            document.querySelector('.hof-input-group').style.display = 'none'; 
-            setTimeout(showHofPopup, 1500); 
-        } else throw new Error(result.message || '알 수 없는 오류'); 
-    }).catch(error => { 
-        messageEl.textContent = '등록에 실패했습니다. 다시 시도해주세요.'; 
-        messageEl.style.color = 'red'; 
-        submitBtn.disabled = false; 
-        console.error('Error submitting score:', error); 
-    }); 
+    };
+    
+    fetch(webAppUrl, {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    }).then(response => response.json()).then(result => {
+        if (result.result === 'success') {
+            hasSubmittedScore = true;
+            saveGameState();
+            messageEl.textContent = '성공적으로 등록되었습니다!';
+            messageEl.style.color = '#4B8134';
+            document.querySelector('.hof-input-group').style.display = 'none';
+            setTimeout(showHofPopup, 1500);
+        } else throw new Error(result.message || '알 수 없는 오류');
+    }).catch(error => {
+        messageEl.textContent = '등록에 실패했습니다. 다시 시도해주세요.';
+        messageEl.style.color = 'red';
+        submitBtn.disabled = false;
+        console.error('Error submitting score:', error);
+    });
 }
 
     
