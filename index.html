@@ -913,23 +913,7 @@ button:hover {
         <div id="hof-message"></div>
         <div class="hof-columns">
             <div class="hof-column">
-                <h3>👑 오늘의 최고 득점자</h3>
-                <div class="hof-table-container">
-                    <table id="hof-table-top-scorers">
-                        <thead>
-                            <tr>
-                                <th>⭐</th>
-                                <th>이니셜</th>
-                                <th>점수</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="hof-column">
-                <h3>🎓 클래식 모드 순위</h3>
+                <h3>🎓 클래식 모드</h3>
                 <div class="hof-table-container">
                     <table id="hof-table-classic">
                         <thead>
@@ -945,7 +929,7 @@ button:hover {
                 </div>
             </div>
             <div class="hof-column">
-                <h3>⏱️ 타임어택 모드 순위</h3>
+                <h3>⏱️ 타임어택 모드</h3>
                 <div class="hof-table-container">
                     <table id="hof-table-timeattack">
                         <thead>
@@ -963,7 +947,6 @@ button:hover {
         </div>
     </div>
 </div>
-
 <div id="confirm-clear-popup-overlay" class="popup-overlay" style="display: none; background-color: rgba(255, 255, 255, 0.8);">
     <div class="popup-box confirm-clear-popup">
         <p>표시한 점과 선분을 모두 지웁니다. <br> 계속할까요?</p>
@@ -1930,7 +1913,6 @@ function showHofPopup() {
     const inputGroup = document.querySelector('.hof-input-group');
     const classicTbody = document.querySelector('#hof-table-classic tbody');
     const timeAttackTbody = document.querySelector('#hof-table-timeattack tbody');
-    const topScorersTbody = document.querySelector('#hof-table-top-scorers tbody');
     
     document.getElementById('hof-reset-message').style.display = 'block';
 
@@ -1947,37 +1929,58 @@ function showHofPopup() {
 
     classicTbody.innerHTML = '<tr><td colspan="3">불러오는 중...</td></tr>';
     timeAttackTbody.innerHTML = '<tr><td colspan="3">불러오는 중...</td></tr>';
-    topScorersTbody.innerHTML = '<tr><td colspan="3">불러오는 중...</td></tr>';
     document.getElementById('hof-popup-overlay').style.display = 'flex';
     
-    fetch(`${webAppUrl}?action=getLeaderboard`) // GET 요청 파라미터 추가
+    // Apps Script의 doGet 함수가 이제 최고 득점자 데이터를 반환하지 않아도 됩니다.
+    fetch(webAppUrl)
         .then(response => response.json())
         .then(data => {
-            populateHofTable(classicTbody, data.classic || [], '클래식');
-            populateHofTable(timeAttackTbody, data.timeAttack || [], '타임어택');
-            populateTopScorerTable(topScorersTbody, data.topScorers || []);
+            // 최고 득점자 데이터를 따로 분리하여 populateHofTable 함수에 전달합니다.
+            const topScorers = data.topScorers || [];
+            
+            // 각 모드의 순위표를 채울 때 최고 득점자 데이터를 같이 전달합니다.
+            const classicTopScorer = topScorers.find(s => s.mode === 'classic');
+            const timeAttackTopScorer = topScorers.find(s => s.mode === 'timeAttack');
+            
+            populateHofTable(classicTbody, data.classic || [], '클래식', classicTopScorer);
+            populateHofTable(timeAttackTbody, data.timeAttack || [], '타임어택', timeAttackTopScorer);
         })
         .catch(error => {
             classicTbody.innerHTML = '<tr><td colspan="3">기록을 불러오는 데 실패했습니다.</td></tr>';
             timeAttackTbody.innerHTML = '<tr><td colspan="3">기록을 불러오는 데 실패했습니다.</td></tr>';
-            topScorersTbody.innerHTML = '<tr><td colspan="3">기록을 불러오는 데 실패했습니다.</td></tr>';
             console.error('Error fetching leaderboard:', error);
         });
 }
 
-// populateHofTable 함수 수정 (순위 표시 로직 개선)
-function populateHofTable(tbody, data, modeName) {
+// populateHofTable 함수 수정 (최고 득점자 행 추가 로직 포함)
+function populateHofTable(tbody, data, modeName, topScorer) {
     tbody.innerHTML = '';
+
+    // 1. 최고 득점자 행을 가장 먼저 추가합니다.
+    if (topScorer) {
+        const topScorerRow = `<tr style="font-weight: bold; color: #4b8134;">
+                                  <td>⭐</td>
+                                  <td>${topScorer.initial} 🏆</td>
+                                  <td>${topScorer.score}</td>
+                              </tr>`;
+        tbody.innerHTML += topScorerRow;
+    }
+    
     if (!data || data.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="3">아직 등록된 ${modeName} 기록이 없습니다.</td></tr>`;
+        tbody.innerHTML += `<tr><td colspan="3">아직 등록된 ${modeName} 기록이 없습니다.</td></tr>`;
         return;
     }
+
+    // 2. 최고 득점자 데이터를 순위 목록에서 제거합니다.
+    // (동점자 처리를 위해 최고 득점자 점수와 이니셜이 동일한 항목을 모두 제거)
+    const filteredData = data.filter(item => !(topScorer && item.score === topScorer.score && item.initial === topScorer.initial));
 
     let rank = 1;
     let rankOffset = 0;
     let prevScore = null;
 
-    data.forEach((item, index) => {
+    // 3. 필터링된 데이터로 순위표를 채웁니다.
+    filteredData.forEach((item, index) => {
         if (prevScore !== null && item.score < prevScore) {
             rank += rankOffset + 1;
             rankOffset = 0;
@@ -1987,6 +1990,11 @@ function populateHofTable(tbody, data, modeName) {
         
         prevScore = item.score;
         
+        // 20위까지만 표시
+        if (rank > 20) {
+            return;
+        }
+
         let initialStyle = '';
         if (rank === 1) initialStyle = 'style="color: #d4af37; font-weight: bold; text-shadow: 0 0 4px #fff, 0 0 6px #ff0;"';
         if (rank === 2) initialStyle = 'style="color: #c0c0c0; font-weight: bold; text-shadow: 0 0 3px #fff;"';
@@ -1994,10 +2002,6 @@ function populateHofTable(tbody, data, modeName) {
         
         const row = `<tr><td>${rank}</td><td ${initialStyle}>${item.initial} ${rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : ''}</td><td>${item.score}</td></tr>`;
         tbody.innerHTML += row;
-
-        if (index >= 19) { // 20명까지만 표시 (0부터 시작)
-            return;
-        }
     });
 }
 
