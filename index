@@ -1924,55 +1924,94 @@ function startQuiz() {
     function showQrPopup() { document.getElementById('qr-popup-overlay').style.display = 'flex'; }
     function closeQrPopup() { document.getElementById('qr-popup-overlay').style.display = 'none'; }
     
-    function showHofPopup() {
-        const messageEl = document.getElementById('hof-message');
-        const inputGroup = document.querySelector('.hof-input-group');
-        const classicTbody = document.querySelector('#hof-table-classic tbody');
-        const timeAttackTbody = document.querySelector('#hof-table-timeattack tbody');
+// showHofPopup 함수 수정
+function showHofPopup() {
+    const messageEl = document.getElementById('hof-message');
+    const inputGroup = document.querySelector('.hof-input-group');
+    const classicTbody = document.querySelector('#hof-table-classic tbody');
+    const timeAttackTbody = document.querySelector('#hof-table-timeattack tbody');
+    const topScorersTbody = document.querySelector('#hof-table-top-scorers tbody');
+    
+    document.getElementById('hof-reset-message').style.display = 'block';
 
-        if (hasSubmittedScore) {
-            inputGroup.style.display = 'none';
-            messageEl.textContent = '이번 학습 기록은 이미 등록되었습니다.';
-            messageEl.style.color = 'blue';
-        } else {
-            inputGroup.style.display = 'block';
-            messageEl.textContent = '';
-            document.getElementById('hof-initial').value = '';
-            document.getElementById('hof-submit-btn').disabled = false;
+    if (hasSubmittedScore) {
+        inputGroup.style.display = 'none';
+        messageEl.textContent = '이번 학습 기록은 이미 등록되었습니다.';
+        messageEl.style.color = 'blue';
+    } else {
+        inputGroup.style.display = 'block';
+        messageEl.textContent = '';
+        document.getElementById('hof-initial').value = '';
+        document.getElementById('hof-submit-btn').disabled = false;
+    }
+
+    classicTbody.innerHTML = '<tr><td colspan="3">불러오는 중...</td></tr>';
+    timeAttackTbody.innerHTML = '<tr><td colspan="3">불러오는 중...</td></tr>';
+    topScorersTbody.innerHTML = '<tr><td colspan="3">불러오는 중...</td></tr>';
+    document.getElementById('hof-popup-overlay').style.display = 'flex';
+    
+    fetch(`${webAppUrl}?action=getLeaderboard`) // GET 요청 파라미터 추가
+        .then(response => response.json())
+        .then(data => {
+            populateHofTable(classicTbody, data.classic || [], '클래식');
+            populateHofTable(timeAttackTbody, data.timeAttack || [], '타임어택');
+            populateTopScorerTable(topScorersTbody, data.topScorers || []);
+        })
+        .catch(error => {
+            classicTbody.innerHTML = '<tr><td colspan="3">기록을 불러오는 데 실패했습니다.</td></tr>';
+            timeAttackTbody.innerHTML = '<tr><td colspan="3">기록을 불러오는 데 실패했습니다.</td></tr>';
+            topScorersTbody.innerHTML = '<tr><td colspan="3">기록을 불러오는 데 실패했습니다.</td></tr>';
+            console.error('Error fetching leaderboard:', error);
+        });
+}
+
+// populateHofTable 함수 수정 (순위 표시 로직 개선)
+function populateHofTable(tbody, data, modeName) {
+    tbody.innerHTML = '';
+    if (!data || data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3">아직 등록된 ${modeName} 기록이 없습니다.</td></tr>`;
+        return;
+    }
+
+    let rank = 1;
+    let rankOffset = 0;
+    let prevScore = null;
+
+    data.forEach((item, index) => {
+        if (prevScore !== null && item.score < prevScore) {
+            rank += rankOffset + 1;
+            rankOffset = 0;
+        } else if (prevScore !== null && item.score === prevScore) {
+            rankOffset++;
         }
-
-        classicTbody.innerHTML = '<tr><td colspan="3">불러오는 중...</td></tr>';
-        timeAttackTbody.innerHTML = '<tr><td colspan="3">불러오는 중...</td></tr>';
-        document.getElementById('hof-popup-overlay').style.display = 'flex';
         
-        fetch(webAppUrl)
-            .then(response => response.json())
-            .then(data => {
-                populateHofTable(classicTbody, data.classic || [], '클래식');
-                populateHofTable(timeAttackTbody, data.timeAttack || [], '타임어택');
-            })
-            .catch(error => {
-                classicTbody.innerHTML = '<tr><td colspan="3">기록을 불러오는 데 실패했습니다.</td></tr>';
-                timeAttackTbody.innerHTML = '<tr><td colspan="3">기록을 불러오는 데 실패했습니다.</td></tr>';
-                console.error('Error fetching leaderboard:', error);
-            });
-    }
+        prevScore = item.score;
+        
+        let initialStyle = '';
+        if (rank === 1) initialStyle = 'style="color: #d4af37; font-weight: bold; text-shadow: 0 0 4px #fff, 0 0 6px #ff0;"';
+        if (rank === 2) initialStyle = 'style="color: #c0c0c0; font-weight: bold; text-shadow: 0 0 3px #fff;"';
+        if (rank === 3) initialStyle = 'style="color: #cd7f32; font-weight: bold; text-shadow: 0 0 3px #fff;"';
+        
+        const row = `<tr><td>${rank}</td><td ${initialStyle}>${item.initial} ${rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : ''}</td><td>${item.score}</td></tr>`;
+        tbody.innerHTML += row;
 
-    function populateHofTable(tbody, data, modeName) {
-        tbody.innerHTML = '';
-        if (!data || data.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="3">아직 등록된 ${modeName} 기록이 없습니다.</td></tr>`;
-        } else {
-            data.forEach(item => {
-                let initialStyle = '';
-                if (item.rank === 1) initialStyle = 'style="color: #d4af37; font-weight: bold; text-shadow: 0 0 4px #fff, 0 0 6px #ff0;"';
-                if (item.rank === 2) initialStyle = 'style="color: #c0c0c0; font-weight: bold; text-shadow: 0 0 3px #fff;"';
-                if (item.rank === 3) initialStyle = 'style="color: #cd7f32; font-weight: bold; text-shadow: 0 0 3px #fff;"';
-                const row = `<tr><td>${item.rank}</td><td ${initialStyle}>${item.initial} ${item.rank === 1 ? '🥇' : item.rank === 2 ? '🥈' : item.rank === 3 ? '🥉' : ''}</td><td>${item.score}</td></tr>`;
-                tbody.innerHTML += row;
-            });
+        if (index >= 19) { // 20명까지만 표시 (0부터 시작)
+            return;
         }
+    });
+}
+
+// 새로운 함수 추가: 최고 득점자 테이블 채우기
+function populateTopScorerTable(tbody, data) {
+    tbody.innerHTML = '';
+    if (!data || data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3">아직 최고 득점자가 없습니다.</td></tr>`;
+        return;
     }
+    
+    const row = `<tr><td>⭐</td><td>${data[0].initial}</td><td>${data[0].score}</td></tr>`;
+    tbody.innerHTML += row;
+}
 
     function closeHofPopup() { document.getElementById('hof-popup-overlay').style.display = 'none'; }
     
@@ -2036,49 +2075,52 @@ function startQuiz() {
 
     function clearGameState() { localStorage.removeItem('quizState'); }
     
-    function submitScore() { 
-        const initialInput = document.getElementById('hof-initial'), 
-              initial = initialInput.value, 
-              submitBtn = document.getElementById('hof-submit-btn'), 
-              messageEl = document.getElementById('hof-message');
-        if (!/^[A-Z]{3}$/.test(initial)) { 
-            messageEl.textContent = '이니셜은 영어 대문자 3글자로 입력해주세요.'; 
-            messageEl.style.color = 'red'; 
-            return; 
-        } 
-        submitBtn.disabled = true; 
-        messageEl.textContent = '등록 중...'; 
-        messageEl.style.color = '#333'; 
-        const data = { 
-            initial, 
-            score: finalScoreValue, 
-            problems: problemList.length, 
-            accuracy: finalAccuracyValue, 
-            difficulty: selectedDifficulty, 
-            type: selectedType, 
-            mode: gameMode
-        }; 
-        fetch(webAppUrl, { 
-            method: 'POST', 
-            cache: 'no-cache', 
-            headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify(data) 
-        }).then(response => response.json()).then(result => { 
-            if (result.result === 'success') { 
-                hasSubmittedScore = true; 
-                saveGameState(); 
-                messageEl.textContent = '성공적으로 등록되었습니다!'; 
-                messageEl.style.color = '#4B8134'; 
-                document.querySelector('.hof-input-group').style.display = 'none'; 
-                setTimeout(showHofPopup, 1500); 
-            } else throw new Error(result.message || '알 수 없는 오류'); 
-        }).catch(error => { 
-            messageEl.textContent = '등록에 실패했습니다. 다시 시도해주세요.'; 
-            messageEl.style.color = 'red'; 
-            submitBtn.disabled = false; 
-            console.error('Error submitting score:', error); 
-        }); 
-    }
+    // submitScore 함수에서 데이터 전송 시 'mode'와 'score'를 함께 보냅니다.
+function submitScore() { 
+    const initialInput = document.getElementById('hof-initial'), 
+        initial = initialInput.value, 
+        submitBtn = document.getElementById('hof-submit-btn'), 
+        messageEl = document.getElementById('hof-message');
+    if (!/^[A-Z]{3}$/.test(initial)) { 
+        messageEl.textContent = '이니셜은 영어 대문자 3글자로 입력해주세요.'; 
+        messageEl.style.color = 'red'; 
+        return; 
+    } 
+    submitBtn.disabled = true; 
+    messageEl.textContent = '등록 중...'; 
+    messageEl.style.color = '#333'; 
+    const data = { 
+        action: 'submitScore',
+        initial, 
+        score: finalScoreValue, 
+        problems: problemList.length, 
+        accuracy: finalAccuracyValue, 
+        difficulty: selectedDifficulty, 
+        type: selectedType, 
+        mode: gameMode
+    }; 
+    fetch(webAppUrl, { 
+        method: 'POST', 
+        cache: 'no-cache', 
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify(data) 
+    }).then(response => response.json()).then(result => { 
+        if (result.result === 'success') { 
+            hasSubmittedScore = true; 
+            saveGameState(); 
+            messageEl.textContent = '성공적으로 등록되었습니다!'; 
+            messageEl.style.color = '#4B8134'; 
+            document.querySelector('.hof-input-group').style.display = 'none'; 
+            setTimeout(showHofPopup, 1500); 
+        } else throw new Error(result.message || '알 수 없는 오류'); 
+    }).catch(error => { 
+        messageEl.textContent = '등록에 실패했습니다. 다시 시도해주세요.'; 
+        messageEl.style.color = 'red'; 
+        submitBtn.disabled = false; 
+        console.error('Error submitting score:', error); 
+    }); 
+}
+
     
     function startTimer(isResuming = false) { stopTimer(); if (!isResuming) remainingTime = timeLimitInMinutes * 60; const timerDisplay = document.getElementById('timer-display'); timerDisplay.style.display = 'block'; updateTimerDisplay(); timerInterval = setInterval(() => { remainingTime--; updateTimerDisplay(); if (remainingTime <= 0) { stopTimer(); showFinalResult(); } }, 1000); }
     function stopTimer() { clearInterval(timerInterval); timerInterval = null; }
